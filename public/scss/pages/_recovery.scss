@@ -1,0 +1,16 @@
+.recovery-page{
+    .recovery-sec{
+        margin-top: 10rem;
+
+        a{
+            margin-top: 1rem;
+            text-decoration: none;
+            color: $color-primary-dark-grey;
+        }
+    }
+    
+    .footer{
+        position: absolute;
+        bottom: 0;
+    } 
+}

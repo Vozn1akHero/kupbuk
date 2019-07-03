@@ -1,0 +1,104 @@
+<%- include('../includes/head') %>
+
+</head>
+<body>
+<div class="user-page">
+    <%- include('../includes/main-header-li') %>
+
+    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+        <div class="row align-items-center justify-content-center">
+            <div class="user-profile col-12 col-sm-12 col-md-10 col-xl-8">
+                <div class="user-profile__settings">
+                    <a class="user-profile__settings__btn" href="/settings">
+                        <svg>
+                            <use xlink:href="img/icons/symbol-defs.svg#icon-cog"></use>
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="user-profile__avatar">
+                    <div class="user-profile__avatar__wrapper-1">
+                        <form enctype="multipart/form-data"
+                              method="post"
+                              action="/update-avatar">
+                            <label for="file-upload"
+                                   class="user-profile__avatar__alter-avatar-label alter-avatar-label">
+                                <svg>
+                                    <use xlink:href="img/icons/symbol-defs.svg#icon-image"></use>
+                                </svg>
+                                <span>
+                                    Zmień zdjęcie
+                                </span>
+                            </label>
+                            <input id="file-upload" onchange="form.submit()" name="new-avatar" type="file"/>
+                        </form>
+                    </div>
+
+                    <div class="user-profile__avatar__wrapper-2 upa-wrapper-2">
+                        <img src="<%= user.userData.userAvatar %>"
+                             alt="zdjęcie użytkownika"
+                             class="user-profile__avatar__img avatar-img"
+                             draggable="false">
+                    </div>
+                </div>
+
+                <div class="user-profile__data">
+                    <h1 class="user-fl-names">
+                        <%= user.userData.firstName %> <%= user.userData.lastName %>
+                    </h1>
+                    <p class="user-login">
+                        @<%= user.userData.login %>
+                    </p>
+                </div>
+
+                <div class="user-profile__gen-info col-12 col-sm-12">
+
+                    <div class="user-offers-body">
+                        <h4>Twoje oferty</h4>
+
+                        <div class="user-offers-body__items">
+                            <table class="align-middle table active-offers-table">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Nazwa</th>
+                                    <th scope="col">Cena</th>
+                                    <th scope="col">Miasto</th>
+                                    <th scope="col">Akcja</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    <% user.offers.forEach(offer => { %>
+                                        <tr>
+                                            <td class="user-offers-name">"<%= offer.title %>". <%= offer.author %></td>
+                                            <td class="user-offers-price"><%= offer.price %> zł</td>
+                                            <td class="user-offers-city"><%= offer.city %></td>
+                                            <td class="user-offers-status">
+                                                <form method="post" action="/remove-offer?id=<%= offer.id %>">
+                                                    <button class="btn remove-button" alt="usuń">
+                                                        <svg>
+                                                            <use xlink:href="img/icons/symbol-defs.svg#icon-bin2"></use>
+                                                        </svg>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    <% }) %>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <%- include('../includes/footer') %>
+
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+.footer{
+    background-color: $color-primary-dark-grey;
+    height: 8rem;
+    margin-top: 5rem;
+
+    @mixin footer-set{
+        width: 33.333%;
+        text-align: center;
+    }
+
+    &__menu{
+        @include footer-set;
+        color: white;
+        font-weight: 100;
+        padding-top: 3.5rem;
+
+        &--elements{
+            &--list{
+                &--item{
+                    color: white;
+                    transition: all .3s;
+                    font-weight: 300;
+
+                    &:hover{
+                        color: #969696; //light 
+                        text-decoration: none;
+                    }
+                }
+            }
+
+            @include media-breakpoint-additional(991px){font-size: 0.7rem;}
+        }
+
+        
+    }
+
+    &__logo{
+        @include footer-set;
+        padding-top: 2rem;
+
+        img{
+            @include media-breakpoint-only(xs){
+                height: 2rem;
+            }
+        }
+    }
+}

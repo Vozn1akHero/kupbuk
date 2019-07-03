@@ -1,0 +1,75 @@
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+@import "abstracts/mixins";
+@import "abstracts/variables";
+
+@import "base/utilities";
+
+@import "components/button";
+@import "components/bgvideo";
+@import "components/popup";
+@import "components/table";
+@import "components/loader";
+@import "components/user-controls";
+@import "components/input";
+
+@import "layout/header";
+@import "layout/footer";
+
+@import "pages/home";
+@import "pages/shop";
+@import "pages/user";
+@import "pages/new-offer";
+@import "pages/book";
+@import "pages/search";
+@import "pages/recovery";
+@import "pages/login";
+@import "pages/settings";
+@import "pages/chat";
+
+
+body, html, *{
+    font-family: 'Lato', sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    min-width: 295px;
+    overflow-x: hidden;
+}
+
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+ 
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+button, input, textarea{
+    border-radius: .2rem !important;
+}
+
+input{
+    &:focus{
+        outline: none;
+        border: none;
+    }
+}
+
+a{
+    &:hover{
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    &:focus{
+        outline: none;
+    }
+}
+
+svg{
+    pointer-events: none;
+}

@@ -1,0 +1,34 @@
+.settings-page{
+  &__settings-sec{
+
+    width: 60%;
+    min-height: 70vh;
+    margin: 7rem 0;
+
+    .pass-altering-fg form,
+    .email-altering-fg form
+    {
+      input, button {
+        margin-top: 1rem;
+      }
+    }
+
+    .pass-altering-fg form{
+
+    }
+    .email-altering-fg form{
+      margin-top: 2rem;
+    }
+  }
+
+  &__wrapper{
+    position: relative;
+    img{
+      position: absolute;
+      bottom: -5rem;
+      z-index: -1;
+      right: 0;
+      max-width: 27rem;
+    }
+  }
+}

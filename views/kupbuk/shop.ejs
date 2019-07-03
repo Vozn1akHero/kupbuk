@@ -1,0 +1,200 @@
+<%- include('../includes/head') %>
+
+</head>
+<body>
+<div class="shop-page">
+    <% if(loggedIn) { %>
+        <%- include('../includes/main-header-li') %>
+    <% } else { %>
+        <%- include('../includes/main-header-nli') %>
+    <% } %>
+
+    <section class="container-fluid shop-section">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3">
+                <div class="shop-section__categories">
+                    <h1 class="shop-section__title-for-main-part">
+                        <svg>
+                            <use xlink:href="/img/icons/symbol-defs.svg#icon-books"></use>
+                        </svg>
+
+                        Kategorie</h1>
+                    <ul class="shop-section__categories__items">
+                        <li class="shop-section__categories__items__item">
+                            <a class="category__1" href="/shop/akcja/1">Akcja</a>
+                        </li>
+                        <li class="shop-section__categories__items__item">
+                            <a class="category__2" href="/shop/biograficzne/1">Biograficzne</a></li>
+                        <li class="shop-section__categories__items__item">
+                            <a class="category__3" href="/shop/dla-dzieci/1">Dla dzieci</a></li>
+                        <li class="shop-section__categories__items__item">
+                            <a class="category__4" href="/shop/fantastyka/1">Fantastyka</a></li>
+                        <li class="shop-section__categories__items__item">
+                            <a class="category__5" href="/shop/historyczna/1">Historyczna</a></li>
+                        <li class="shop-section__categories__items__item">
+                            <a class="category__6" href="/shop/horror/1">Horror</a></li>
+                        <li class="shop-section__categories__items__item">
+                            <a class="category__7" href="/shop/jezyki-obce/1">Języki obce</a></li>
+                        <li class="shop-section__categories__items__item">
+                            <a class="category__8" href="/shop/klasyka/1">Klasyka</a></li>
+                        <li class="shop-section__categories__items__item">
+                            <a class="category__9" href="/shop/komiks/1">Komiks</a></li>
+                        <li class="shop-section__categories__items__item">
+                            <a class="category__10" href="/shop/kryminal/1">Kryminał</a></li>
+                        <li class="shop-section__categories__items__item">
+                            <a class="category__11" href="/shop/literatura-faktu/1">Literatura faktu</a></li>
+                        <li class="shop-section__categories__items__item">
+                            <a class="category__12" href="/shop/literatura-naukowa/1">Literatura naukowa</a></li>
+                        <li class="shop-section__categories__items__item">
+                            <a class="category__13" href="/shop/literatura-piekna/1">Literatura piękna</a></li>
+                        <li class="shop-section__categories__items__item">
+                            <a class="category__14" href="/shop/mlodziezowa/1">Młodzieżowa</a></li>
+                        <li class="shop-section__categories__items__item">
+                            <a class="category__15" href="/shop/obyczajowa/1">Obyczajowa</a></li>
+                        <li class="shop-section__categories__items__item">
+                            <a class="category__16" href="/shop/poradnik/1">Poradnik</a></li>
+                        <li class="shop-section__categories__items__item">
+                            <a class="category__17" href="/shop/romans/1">Romans</a></li>
+                        <li class="shop-section__categories__items__item">
+                            <a class="category__18" href="/shop/science-fiction/1">Science-fiction</a></li>
+                        <li class="shop-section__categories__items__item">
+                            <a class="category__19" href="/shop/triller/1">Triller</a></li>
+                        <li class="shop-section__categories__items__item">
+                            <a class="category__20" href="/shop/other/1">Inne</a></li>
+                        <li class="shop-section__categories__items__item">
+                            <a class="category__0" href="/shop/all/1">Wszystko</a></li>
+                    </ul>
+
+
+
+                    <ul class="shop-section__categories__items__tablet-phone">
+                        <li class="shop-section__categories__items__tablet-phone__item">
+                            <a class="category__1" href="/shop/akcja/1">Akcja</a>
+                        </li>
+                        <li class="shop-section__categories__items__tablet-phone__item">
+                            <a class="category__2" href="/shop/biograficzne/1">Biograficzne</a></li>
+                        <li class="shop-section__categories__items__tablet-phone__item">
+                            <a class="category__3" href="/shop/dla-dzieci/1">Dla dzieci</a></li>
+                        <li class="shop-section__categories__items__tablet-phone__item">
+                            <a class="category__4" href="/shop/fantastyka/1">Fantastyka</a></li>
+                        <li class="shop-section__categories__items__tablet-phone__item">
+                            <a class="category__5" href="/shop/historyczna/1">Historyczna</a></li>
+                        <li class="shop-section__categories__items__tablet-phone__item">
+                            <a class="category__6" href="/shop/horror/1">Horror</a></li>
+                        <li class="shop-section__categories__items__tablet-phone__item">
+                            <a class="category__7" href="/shop/jezyki-obce/1">Języki obce</a></li>
+                        <li class="shop-section__categories__items__tablet-phone__item">
+                            <a class="category__8" href="/shop/klasyka/1">Klasyka</a></li>
+                        <li class="shop-section__categories__items__tablet-phone__item">
+                            <a class="category__9" href="/shop/komiks/1">Komiks</a></li>
+                        <li class="shop-section__categories__items__tablet-phone__item">
+                            <a class="category__10" href="/shop/kryminal/1">Kryminał</a></li>
+                        <li class="shop-section__categories__items__tablet-phone__item">
+                            <a class="category__11" href="/shop/literatura-faktu/1">Literatura faktu</a></li>
+                        <li class="shop-section__categories__items__tablet-phone__item">
+                            <a class="category__12" href="/shop/literatura-naukowa/1">Literatura naukowa</a></li>
+                        <li class="shop-section__categories__items__tablet-phone__item">
+                            <a class="category__13" href="/shop/literatura-piekna/1">Literatura piękna</a></li>
+                        <li class="shop-section__categories__items__tablet-phone__item">
+                            <a class="category__14" href="/shop/mlodziezowa/1">Młodzieżowa</a></li>
+                        <li class="shop-section__categories__items__tablet-phone__item">
+                            <a class="category__15" href="/shop/obyczajowa/1">Obyczajowa</a></li>
+                        <li class="shop-section__categories__items__tablet-phone__item">
+                            <a class="category__16" href="/shop/poradnik/1">Poradnik</a></li>
+                        <li class="shop-section__categories__items__tablet-phone__item">
+                            <a class="category__17" href="/shop/romans/1">Romans</a></li>
+                        <li class="shop-section__categories__items__tablet-phone__item">
+                            <a class="category__18" href="/shop/science-fiction/1">Science-fiction</a></li>
+                        <li class="shop-section__categories__items__tablet-phone__item">
+                            <a class="category__19" href="/shop/triller/1">Triller</a></li>
+                        <li class="shop-section__categories__items__tablet-phone__item">
+                            <a class="category__20" href="/shop/other/1">Inne</a></li>
+                        <li class="shop-section__categories__items__tablet-phone__item">
+                            <a class="category__0" href="/shop/all/1">Wszystko</a></li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="col-sm-12 col-md-12 col-lg-9 col-xl-9">
+                <div class="shop-section__products">
+                    <div class="shop-section__products__main">
+
+                        <% if(books !== null) { books.forEach(book => { %>
+                            <div class="card">
+                                <div class="card-body shop-section__products__item">
+                                    <div class="shop-section__products__item__price">
+                                        <div class="shop-section__products__item__price__data">
+                                            <span><%= book.price %> ZŁ</span>
+                                        </div>
+                                    </div>
+
+                                    <img src="<%= book.thumbnailUrl %>" alt="book's cover">
+
+                                    <a href="/book?id=<%= book.id %>" class="shop-section__products__item__title">
+                                        <%= book.title %>
+                                    </a>
+
+                                    <p class="shop-section__products__item__author">
+                                        <%= book.author %>
+                                    </p>
+
+                                    <p class="shop-section__products__item__city">
+                                        <svg>
+                                            <use xlink:href="/img/icons/symbol-defs.svg#icon-location"></use>
+                                        </svg>
+                                        <span><%= book.city %></span>
+                                    </p>
+                                </div>
+                            </div>
+                        <% } ) %>
+
+                        <% } else { %>
+                            <span>Nie ma książek należących do tej kategorii</span>
+                        <% } %>
+
+                    </div>
+
+
+                    <% if(maxAmountOfPages !== 1) { %>
+                        <div class="row align-items-center justify-content-center controls">
+                            <%  if(currentPageNum === 1) { %>
+                                <button class="controls__right">
+                                    <svg>
+                                        <use xlink:href="/img/icons/symbol-defs.svg#icon-circle-right"></use>
+                                    </svg>
+                                </button>
+
+                            <% } else if(currentPageNum === maxAmountOfPages) { %>
+                                <button class="controls__left">
+                                    <svg>
+                                        <use xlink:href="/img/icons/symbol-defs.svg#icon-circle-left"></use>
+                                    </svg>
+                                </button>
+
+                            <% } else { %>
+                                <button class="controls__left">
+                                    <svg>
+                                        <use xlink:href="/img/icons/symbol-defs.svg#icon-circle-left"></use>
+                                    </svg>
+                                </button>
+                                <button class="controls__right">
+                                    <svg>
+                                        <use xlink:href="/img/icons/symbol-defs.svg#icon-circle-right"></use>
+                                    </svg>
+                                </button>
+                            <% } %>
+                        </div>
+                    <% } %>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <%- include('../includes/footer') %>
+
+</div>
+</body>
+</html>

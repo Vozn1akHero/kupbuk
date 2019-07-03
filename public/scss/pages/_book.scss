@@ -1,0 +1,128 @@
+.book-page{
+    .book-section{
+        text-align: center;
+
+        padding: 1rem;
+
+        &__main-info-block-1{
+            flex: 0 0 3%;
+            padding: 1rem !important;
+        }
+
+        &__order-options{
+            display: flex;
+            justify-content: center;
+
+            &__seller-data{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                color: $color-primary-dark-grey;
+
+                &__md{
+                    img{
+                        border-radius: 50%;
+                        width: 5rem;
+                        height: 5rem;
+                    }
+                }
+
+                &__maild{
+                    svg{
+                        width: 1.2rem;
+                        height: 1.2rem;
+                        fill: $color-primary-orange;
+                    }
+                }
+            }
+        }
+
+        .col-lg-4, .col-xl-4{
+            text-align: left;
+        }
+
+        &__book-cover{
+            position: relative;
+
+            img{
+                width: 15.37rem;
+                height: 21.85rem;
+            }
+        }
+
+        &__price{
+            position: absolute;
+            top: -2rem;
+            left: -2rem;
+            background-color: $color-primary-orange;
+            color: $color-white;
+            border-radius: 50%;
+            width: 4rem;
+            height: 4rem;
+            float: right;
+            padding: 0.4rem;
+            z-index: 1000;
+        }
+
+        &__title{
+            color: $color-primary-blue;
+            word-break: break-word;
+        }
+
+        &__author{
+            color: $color-primary-orange;
+        }
+
+        &__description{
+            color: $color-primary-dark-grey;
+            word-break: break-word;
+        }
+
+        &__main-data-row{
+            display: flex;
+            align-items: center;
+
+            svg{
+                width: 2rem;
+                height: 2rem;
+                fill: $color-primary-dark-grey;
+                margin-right: .5rem;
+            }
+        }
+
+        &__city, &__date{
+            margin-bottom: 1.5rem;
+        }
+
+        &__city{
+            margin-top: 1rem;
+            span{
+                margin-left: 0.2rem;
+                color: $color-primary-blue;
+            }
+        }
+
+        &__date{
+            span{
+                margin-left: 0.2rem;
+                color: $color-primary-blue;
+            }
+        }
+
+        &__table{
+            margin-top: 5rem;
+
+            tr td:first-child{
+                width: 10rem;
+                background-color: #f8f9fa !important;
+                border-top: 1px solid #dee2e6;
+            }
+
+            tr td:nth-of-type(2){
+                @include media-breakpoint-up(md){
+                    width: 33rem;
+                }
+            }
+        }
+    }
+}

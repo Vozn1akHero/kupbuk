@@ -1,0 +1,51 @@
+<%- include('../includes/head') %>
+
+</head>
+    <body>
+        <div class="settings-page">
+            <%- include('../includes/main-header-li') %>
+
+            <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="row align-items-center justify-content-center settings-page__wrapper">
+                    <div class="settings-page__settings-sec">
+                        <div class="form-group pass-altering-fg">
+                            <form autocomplete="off"
+                                  method="post" action="/auth/change-password">
+                                <span>Zmiana hasła</span>
+                                <input type="password"
+                                       class="form-control"
+                                       id="oldPassword"
+                                       name="oldPassword"
+                                       placeholder="Poprzednie hasło"/>
+                                <input type="password"
+                                       class="form-control"
+                                       id="newPassword"
+                                       name="newPassword"
+                                       placeholder="Nowe hasło"/>
+                                <button class="passChangeSubmit btn submit-button">Zmień hasło</button>
+                            </form>
+                        </div>
+
+                        <div class="form-group email-altering-fg">
+                            <form autocomplete="off"
+                                  method="post" action="/auth/change-email">
+                                <span>Zmiana emaila</span>
+                                <input type="password"
+                                       class="form-control"
+                                       id="newPassword"
+                                       name="newPassword"
+                                       placeholder="Nowy email"/>
+                                <button class="passChangeSubmit btn submit-button">Zmień email</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <img src="/img/settingsbg.jpg" alt="" draggable="false">
+                </div>
+            </div>
+
+            <%- include('../includes/footer') %>
+
+        </div>
+    </body>
+</html>

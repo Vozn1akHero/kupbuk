@@ -1,0 +1,155 @@
+<%- include('../includes/head') %>
+</head>
+<body>
+<div class="new-offer-page">
+    <%- include('../includes/main-header-li') %>
+
+    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+        <div class="row align-items-center justify-content-center">
+            <div class="new-product-adding">
+                <form method="post"
+                      class="new-product-adding-form"
+                      enctype="multipart/form-data"
+                      action="/new-offer">
+                    <div class="form-group">
+                        <input type="text"
+                               class="form-control"
+                               id="InputBookName"
+                               name="title"
+                               placeholder="Nazwa ksiażki"
+                               minlength="1">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text"
+                               class="form-control"
+                               id="InputBookAuthorName"
+                               name="author"
+                               placeholder="Autor"
+                               minlength="1">
+                    </div>
+
+                    <div class="form-group">
+                        <textarea name="description" id="InputBookDescName" class="form-control" cols="30" rows="10"
+                                  placeholder="Opis książki (nie zapomnij tu opisać stan swojej książki)"
+                                  minlength="100"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="number"
+                               class="form-control"
+                               id="InputBookPagesAmount"
+                               name="amountOfPages"
+                               placeholder="Ilość stron"
+                               minlength="1">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text"
+                               class="form-control"
+                               id="InputBookLanguage"
+                               name="language"
+                               placeholder="Język wydania"
+                               minlength="1">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="number"
+                               class="form-control"
+                               id="InputBookEditionNumber"
+                               name="publishNumber"
+                               placeholder="Numer wydania"
+                               minlength="1">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text"
+                               class="form-control"
+                               id="InputBookCity"
+                               name="city"
+                               placeholder="Miasto"
+                               minlength="1">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="number"
+                               class="form-control"
+                               id="InputBookPrice"
+                               name="price"
+                               placeholder="Cena"
+                               minlength="1">
+                    </div>
+
+                    <div class="form-group thumbnail-group mt-4 mb-4">
+                        <div>
+                            <label for="InputBookPhoto">Dodaj okładkę</label>
+                            <input type="file"
+                                   class="form-control-file"
+                                   id="InputBookPhoto"
+                                   name="thumbnail"
+                                   accept="image/jpeg"
+                                   required>
+                            <label for="InputBookPhoto">
+                                <span>PS przypominamy, że należy dodawać tylko i wyłącznie obraz okładki na wydruk albowiem inaczej oferta zostanie usunięta.</span>
+                            </label>
+                        </div>
+
+                        <div class="thumbnail-group__examples">
+                            <div>
+                                <img src="/img/thumbnail-example-1-sk-it.jpg" alt="ex1" class="thumbnail-group__examples__1">
+                                <img src="/img/thumbnail-example-2-rd-sg.jpg" alt="ex2" class="thumbnail-group__examples__2">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <select id="InputBookCategory"
+                                name="categoryId"
+                                required>
+                            <option value="" disabled selected>Wybierz kategorię</option>
+                            <option value="1">Akcja</option>
+                            <option value="2">Biograficzne</option>
+                            <option value="3">Dla dzieci</option>
+                            <option value="4">Fantastyka</option>
+                            <option value="5">Historyczna</option>
+                            <option value="6">Horror</option>
+                            <option value="7">Jezyki obce</option>
+                            <option value="8">Klasyka</option>
+                            <option value="9">Komiks</option>
+                            <option value="10">Kryminal</option>
+                            <option value="11">Literatura faktu</option>
+                            <option value="12">Literatura naukowa</option>
+                            <option value="13">Literatura piękna</option>
+                            <option value="14">Młodziezowa</option>
+                            <option value="15">Obyczajowa</option>
+                            <option value="16">Poradnik</option>
+                            <option value="17">Romans</option>
+                            <option value="18">Science-fiction</option>
+                            <option value="19">Triller</option>
+                            <option value="20">Inne</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <select id="InputBookCover"
+                                name="coverId"
+                                required>
+                            <option value="" disabled selected>Wybierz typ okładki</option>
+                            <option value="1">miękka</option>
+                            <option value="2">twarda</option>
+                        </select>
+                    </div>
+
+                    <button class="btn submit-button new-offer-submit-btn mt-5">Dodaj</button>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <%- include('../includes/footer') %>
+
+</div>
+</body>
+</html>

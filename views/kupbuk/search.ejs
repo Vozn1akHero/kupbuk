@@ -1,0 +1,55 @@
+<%- include('../includes/head') %>
+
+</head>
+<body>
+
+<div class="search-page">
+    <% if(loggedIn) { %>
+        <%- include('../includes/main-header-li') %>
+    <% } else { %>
+        <%- include('../includes/main-header-nli') %>
+    <% } %>
+
+    <section class="search-page__main-section container-fluid col-11 col-sm-11 col-md-11 col-lg-11 col-xl-11">
+        <% if(foundBooks !== null) { foundBooks.forEach(book => { %>
+
+            <div class="result row align-items-center justify-content-center">
+                <div class="result__left-wrap bg-light col-6 col-sm-6 col-md-4 col-lg-4 col-xl-2">
+                    <img src="<%= book.thumbnailUrl %>">
+                    <div class="result__price">
+                            <span>
+                                <%= book.price %>
+                            </span>
+                            <span>ZŁ</span>
+                    </div>
+                </div>
+                <div class="result__right-wrap col-4 col-sm-5 col-md-5 col-lg-6 col-xl-4">
+                    <a href="book?id=<%=book.id%>"
+                       class="result__title">
+                        <%= book.title %>
+                    </a>
+                    <p class="result__author">
+                        <%= book.author %>
+                    </p>
+                    <p class="result__location">
+                        <svg>
+                            <use xlink:href="img/icons/symbol-defs.svg#icon-location"></use>
+                        </svg>
+                        <span>
+                            <%= book.city %>
+                        </span>
+                    </p>
+                </div>
+            </div>
+        <% }) %>
+        <%  } else { %>
+            <span>Nic nie znaleźliśmy</span>
+        <% } %>
+
+    </section>
+
+    <%- include('../includes/footer') %>
+
+</div>
+</body>
+</html>

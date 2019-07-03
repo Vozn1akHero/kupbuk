@@ -1,0 +1,82 @@
+.joinup-login-button{
+    width: 8rem;
+    text-align: center;
+    background-color: $color-primary-light-grey;
+    color: $color-primary-blue !important;
+    transition: all .3s;
+    transform: skewX(-10deg);
+    cursor: pointer;
+    
+    & span{
+        display: block;
+        transform: skewX(10deg);
+    }
+
+    &:hover{
+        background-color: #e5e5e5;
+    }
+
+ 
+    @include media-breakpoint-additional(991px) {
+        width: 10rem;
+        background-color: inherit;
+        color: $color-primary-light-grey;
+        text-align: center;
+        
+    }
+}
+
+.submit-button{
+    background-color: $color-primary-blue;
+    color: $color-white !important;
+    width: 13rem;
+
+    &:hover{
+        background-color: #278ea8;
+        color: $color-white;
+    }
+
+    &:focus{
+        box-shadow: none;
+        outline: none;
+    }
+}
+
+.remove-button{
+    background-color: transparent;
+}
+
+.buy-button{
+    background-color: $color-primary-blue;
+    color: $color-white;
+    width: 13rem;
+    transform: skew(-3deg);
+
+    &:hover{
+        color: $color-white;
+    }
+
+    &:focus{
+        box-shadow: none;
+    }
+
+    span{
+        display: block;
+        transform: skew(3deg);
+    }
+}
+
+#edit_offer-button{
+    background-color: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    transition: all .6s;
+
+    &:hover{
+        svg g path{
+            fill: $color-primary-dark-grey;
+        }
+    }
+}
+

@@ -1,0 +1,113 @@
+.search-page {
+  &__main-section {
+    margin: 3rem 0 10rem 0;
+    min-height: 60vh;
+    text-align: center;
+
+    .result {
+      height: 13rem;
+
+      &:not(:first-child) {
+        margin-top: 2rem;
+      }
+
+      &__left-wrap {
+        img {
+          width: 9rem;
+
+          @include media-breakpoint-additional(486px) {
+            width: 7rem;
+          }
+        }
+      }
+
+      &__price {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: #ff6600;
+        color: #fff;
+        border-radius: 50%;
+        width: 3rem;
+        height: 3rem;
+        padding: 0.4rem;
+        z-index: 1000;
+        text-align: center;
+
+        span:nth-of-type(1) {
+          font-size: 0.9rem;
+          @include media-breakpoint-additional(486px) {
+            font-size: 0.7rem;
+          }
+        }
+
+        span:nth-of-type(2) {
+          margin-top: -0.5rem;
+          display: block;
+          font-size: 0.9rem;
+
+          @include media-breakpoint-additional(486px) {
+            font-size: 0.7rem;
+          }
+        }
+
+        @include media-breakpoint-additional(486px) {
+          width: 2rem;
+          height: 2rem;
+          right: 2px;
+          padding: 0;
+        }
+      }
+
+      &__right-wrap {
+        height: 13rem;
+        background: #fdfdfd;
+        padding: 2vw;
+
+        @include media-breakpoint-additional(486px) {
+          height: 11rem;
+        }
+      }
+
+      &__title {
+        font-size: 1.4rem;
+        color: $color-primary-blue;
+
+        @include media-breakpoint-additional(486px) {
+          font-size: 1rem;
+        }
+      }
+
+      &__author {
+        color: $color-primary-dark-grey;
+
+        @include media-breakpoint-down(md) {
+          margin-bottom: 0.5rem !important;
+        }
+
+        @include media-breakpoint-additional(486px) {
+          font-size: 0.7rem;
+        }
+      }
+
+      &__location {
+        svg {
+          width: 2rem;
+          height: 2rem;
+          fill: $color-primary-dark-grey;
+        }
+
+        span {
+          color: $color-primary-dark-grey;
+          margin-left: .1rem;
+
+          @include media-breakpoint-additional(486px) {
+            font-size: .7rem;
+          }
+        }
+      }
+    }
+  }
+
+
+}

@@ -1,0 +1,95 @@
+<%- include('../includes/head') %>
+<script type="module" src="/js/chat/client.js"></script>
+</head>
+<body>
+<div class="chat-page">
+    <%- include('../includes/main-header-li') %>
+
+    <div class="chat-page__chat row justify-content-center mt-5">
+        <div class="col-7 col-md-7 col-lg-7 col-xl-7">
+            <div class="row">
+                <div class="chat-page__chat__header row
+                 border-bottom p-3">
+                    <img src="/img/opinia1.png"
+                         alt="interlocutor's photo"
+                         class="chat-page__chat__header__interlocutor__photo">
+                    <h4 class="chat-page__chat__header__interlocutor__data">Lorem Ipsum</h4>
+                </div>
+
+                <div class="chat-page__chat__messages row justify-content-center pt-3 pb-5">
+                    <div class="col-10 col-md-10 col-lg-10 col-xl-10">
+                        <div class="chat-page__chat__messages__interlocutor__item mt-3">
+                            <img src="/img/opinia1.png"
+                                 alt="interlocutor's photo">
+                            <div class="ml-3 mb-0 p-3 rounded interlocutor-message-content">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                    A accusamus accusantium adipisci aliquam architecto asperiores corporis dolore
+                                    ducimus eos
+                                    fugiat hic iure laboriosam non quos,
+                                    reiciendis tempore totam voluptatem voluptates!</p>
+                            </div>
+                        </div>
+
+                        <div class="chat-page__chat__messages__interlocutor__item mt-3">
+                            <img src="/img/opinia1.png"
+                                 alt="interlocutor's photo">
+                            <div class="ml-3 mb-0 p-3 rounded interlocutor-message-content">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                    A accusamus accusantium adipisci aliquam architecto asperiores corporis dolore
+                                    ducimus eos
+                                    fugiat hic iure laboriosam non quos,
+                                    reiciendis tempore totam voluptatem voluptates!</p>
+                            </div>
+                        </div>
+
+                        <div class="chat-page__chat__messages__user__item mt-3">
+                            <div class="mb-0 mr-3 p-3 rounded user-message-content">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                    A accusamus accusantium adipisci aliquam architecto asperiores corporis dolore
+                                    ducimus eos
+                                    fugiat hic iure laboriosam non quos,
+                                    reiciendis tempore totam voluptatem voluptates!
+                                </p>
+                            </div>
+
+                            <img src="/img/opinia2.png"
+                                 alt="user's photo">
+                        </div>
+
+                        <div class="chat-page__chat__messages__user__item mt-3">
+                            <div class="mb-0 mr-3 p-3 rounded user-message-content">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                    A accusamus accusantium adipisci aliquam architecto asperiores corporis dolore
+                                    ducimus
+                                    eos fugiat hic iure laboriosam non quos, reiciendis tempore totam voluptatem
+                                    voluptates!
+                                </p>
+                            </div>
+
+                            <img src="/img/opinia2.png"
+                                 alt="user's photo">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-page__chat__new-msg-area row justify-content-center pt-4 pb-4 border-top">
+                    <form id="newMsgForm">
+                        <textarea class="form-control"
+                                  id="messageContent"
+                                  rows="3"></textarea>
+
+                        <button class="btn submit-button ml-3">Wyślij</button>
+
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('../includes/footer') %>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+    <%- include('../includes/head') %>
+
+</head>
+
+<body>
+<div class="homepage">
+    <%- include('../includes/auth/login-popup') %>
+    <%- include('../includes/auth/joinup-popup') %>
+    <%- include('../includes/auth/password-recovery-popup') %>
+
+    <%- include('../includes/common-header-1') %>
+
+
+    <div class="container-fluid main-section">
+        <div class="row">
+            <div class="main-section__text_box">
+                <div id="row1"><p class="text-center">KUPUJ <span>LUB</span></p></div>
+                <div id="row2"><p class="text-center">SPRZEDAWAJ</p></div>
+                <div id="row3"><p class="text-center">SWOJE KSIĄŻKI</p></div>
+                <div id="row4"><a href="/shop" class="main-section__button"><span>WYPRÓBUJ</span></a></div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container-fluid section-about">
+        <div class="row">
+            <div class="grid-container">
+                <div class="section-about__box-1">
+                    <p>Uzbierało Ci się za dużo książek?</p>
+                    <p>Sprzedaj je u nas!</p>
+                    <p>Chętni na nie zawsze się znajdą!</p>
+                    <img src="img/book.png" alt="" draggable="false">
+                </div>
+
+                <div class="section-about__box-2"></div>
+
+                <div class="section-about__box-3"></div>
+                <div class="section-about__box-4">
+                    <p>Jak działa ta strona?</p>
+                    <p>1) Wystarczy się zarejestrować żeby kupować książki od innych.</p>
+                    <p>2) Wystarczy się zarejestrować, podać oraz potwierdzić swoje dane osobowe żeby móc sprzedawać książki.</p>
+                    <img src="img/open-book.png" alt="" draggable="false">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid section-opinions">
+        <div class="row full-height">
+            <div class="bg-video">
+                <video class="bg-video__content" autoplay muted loop>
+                    <source src="video/videobg.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="section-opinions__content">
+                <div class="section-opinions__content--opinion">
+                    <div class="section-opinions__content--opinion__image">
+                        <img src="img/opinia1.png" alt="">
+                    </div>
+                    <div class="section-opinions__content--opinion__content">
+                        <h1>FANTASTYCZNA STRONA!</h1>
+                        <p>muszę się przyznać, że na początku się bałem,bo wszędzie oszukujo, ale tu tego zapewne nie doświadczcycie. Żona miała kilka starych rzadkich egzemplarzy książek, które udało mi się bardzo szybko i głównie korzystnie sprzedać.</p>
+                    </div>
+                </div>
+                <div class="section-opinions__content--opinion">
+                    <div class="section-opinions__content--opinion__image">
+                        <img src="img/opinia2.png" alt="">
+                    </div>
+                    <div class="section-opinions__content--opinion__content">
+                        <h1>DOBRA APPKA!</h1>
+                        <p>sprzedałem już tutaj ponad 20 książek.Nikt nikogo nie oszukuje. Jedyną wadą jest oczywiście brak możliwości zapłaty jak na Allegro żeby można było książeczki wysyłać do innych miast zamiast spotykać się z kupującymi w rodzimym mieście.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include('../includes/footer') %>
+
+</div>
+</body>
+</html>

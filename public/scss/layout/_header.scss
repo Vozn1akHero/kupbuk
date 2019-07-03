@@ -1,0 +1,66 @@
+.header{
+    .nav-link{
+        margin-left: 1rem;
+    }
+
+    .logo-header{
+        img{
+            width: 7rem;
+        }
+
+        @include media-breakpoint-only(xs){
+            max-width: 74%;
+            height: auto;
+        }
+    }
+    
+    @media screen and (max-width: 991px) {
+        .nav-link{
+            margin-left: 0;
+        }
+    }
+}
+
+.navbar-in-shop, .navbar-login-page{
+    padding: 1rem 4rem;
+
+    @include media-breakpoint-down(sm){
+        padding: 1rem 2rem;
+    }
+}
+
+.shop-page,
+.user-page,
+.new-offer-page,
+.book-page,
+.search-page,
+.settings-page,
+.chat-page {
+    .header{
+        .navbarShop{
+            justify-content: space-between;
+
+            #search-form{
+                width: 35vw;
+                margin-left: 15rem;
+
+                @include media-breakpoint-down(md){
+                    margin: 1rem auto;
+                }
+            }
+
+            .navbar-nav{
+                @include media-breakpoint-down(md){
+                    align-items: center;
+                    margin-top: 1rem;
+                }
+            }
+
+            @include media-breakpoint-down(md){
+                #search-form{
+                    margin: 0 auto;
+                }
+            }
+        }
+    }
+}

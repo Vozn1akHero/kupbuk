@@ -1,0 +1,51 @@
+<%- include('./auth/joinup-popup.ejs') %>
+<%- include('./auth/login-popup.ejs') %>
+<%- include('./auth/password-recovery-popup.ejs') %>
+
+<header class="container-fluid header">
+    <div class="row">
+        <nav class="navbar navbar-in-shop navbar-expand-lg navbar-light bg-light col-xl-12">
+            <a class="navbar-brand logo-header" href="/shop">
+                <img src="/img/logoheader.png" alt="logo" class="logo-header" draggable="false">
+            </a>
+            <button class="navbar-toggler"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse navbarShop" id="navbarSupportedContent">
+                <form id="search-form" method="get" action="/search">
+                    <div class="input-group search-input">
+                        <input type="text"
+                               class="form-control"
+                               name="phrase"
+                               placeholder="Szukaj"/>
+
+                        <button class="submit-button search-input__btn">
+                            <svg>
+                                <use xlink:href="/img/icons/symbol-defs.svg#icon-search"></use>
+                            </svg>
+                        </button>
+                    </div>
+                </form>
+
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link joinup-login-button" data-toggle="modal" data-target="#joinupModal">
+                            <span>Zarejestruj się</span>
+                        </a></li>
+                    <li class="nav-item">
+                        <a class="nav-link joinup-login-button" data-toggle="modal" data-target="#loginModal">
+                            <span>Zaloguj</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</header>

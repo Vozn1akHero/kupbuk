@@ -1,0 +1,61 @@
+<header class="container-fluid header">
+    <div class="row">
+        <nav class="navbar navbar-in-shop navbar-expand-lg navbar-light bg-light col-xl-12">
+            <a class="navbar-brand logo-header" href="/shop/all/1"><img src="/img/logoheader.png" alt="logo" draggable="false"></a>
+            <button class="navbar-toggler"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse navbarShop" id="navbarSupportedContent">
+                <form id="search-form" method="get" action="/search">
+                    <div class="input-group search-input">
+                        <input type="text"
+                               class="form-control"
+                               name="phrase"
+                               placeholder="Szukaj"/>
+
+                        <button class="submit-button search-input__btn">
+                            <svg>
+                                <use xlink:href="/img/icons/symbol-defs.svg#icon-search"></use>
+                            </svg>
+                        </button>
+                    </div>
+                </form>
+
+
+
+                <div class="user-controls">
+                    <a href="/new-offer" class="a-btn a-btn1 new-offer-btn">
+                        <svg>
+                            <use xlink:href="/img/icons/symbol-defs.svg#icon-plus"></use>
+                        </svg>
+                    </a>
+
+                    <a href="/me"
+                       class="my-profile-btn">
+                        <svg>
+                            <use xlink:href="/img/icons/symbol-defs.svg#icon-user"></use>
+                        </svg>
+                    </a>
+
+                    <form method="post"
+                          class="logout-btn"
+                          action="/auth/logout">
+                        <button class="sign-out-btn">
+                            <svg>
+                                <use xlink:href="/img/icons/symbol-defs.svg#icon-exit"></use>
+                            </svg>
+                        </button>
+                    </form>
+
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>

@@ -1,0 +1,47 @@
+.search-input{
+  @include media-breakpoint-down(md){
+    width: 19rem;
+    margin: 0 auto;
+  }
+
+  input{
+    border-radius: 0;
+    width: 33rem !important;
+    height: 2.7rem !important;
+    font-weight: 300;
+    font-size: 0.95rem;
+    padding: 1rem;
+    position: relative;
+
+    @include media-breakpoint-additional(1426px){
+      width: 26rem !important;
+    }
+    @include media-breakpoint-additional(1333px){
+      width: 22rem !important;
+    }
+    @include media-breakpoint-additional(1253px){
+      width: 19rem !important;
+    }
+
+    &:focus{
+      border-color: $color-primary-light-grey;
+      z-index: 0 !important;
+    }
+  }
+
+  &__btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 4rem;
+    height: 100%;
+    border: none;
+    outline: none;
+
+    svg {
+      width: 1.3rem;
+      height: 100%;
+      fill: $color-white;
+    }
+  }
+}

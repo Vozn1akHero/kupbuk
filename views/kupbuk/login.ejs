@@ -1,0 +1,56 @@
+<%- include('../includes/head') %>
+
+</head>
+
+<body>
+<div class="login-page">
+    <%- include('../includes/common-header-2') %>
+
+    <section class="login-page__login-sec">
+        <div class="login-page__login-sec__wrapper-1">
+            <div class="login-page__login-sec__header">
+                <h3>Logowanie</h3>
+            </div>
+            <div class="login-page__login-sec__controls-sec">
+                <form method="post" action="/auth/login">
+                    <div class="form-group">
+                        <input type="text"
+                               class="form-control"
+                               id="loginInputLogin"
+                               name="userLoginOrEmail"
+                               placeholder="Login albo email"
+                               autocomplete="login"
+                               required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="password"
+                               class="form-control"
+                               id="loginInputPassword"
+                               name="userPassword"
+                               placeholder="Hasło"
+                               autocomplete="password"
+                               required>
+                    </div>
+
+                    <div class="form-group">
+                        <button class="btn submit-button log-in-button">Zaloguj</button>
+                        <a class="restore-password">zapomniałeś hasła?</a></div>
+                </form>
+
+                <% if(onPasswordIncorrectness) { %>
+                    <span style="color: red;">Wprowadziłeś nieprawidłowe dane logowania</span>
+                <% } %>
+
+                <div class="login-page__join-up-sec">
+                    <span>Nie masz konta?</span>
+
+                    <a class="join-up-btn">Zarejestruj się</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <%- include('../includes/footer') %>
+</div>
+</body>

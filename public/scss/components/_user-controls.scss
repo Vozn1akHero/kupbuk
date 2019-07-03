@@ -1,0 +1,76 @@
+.user-controls{
+    display: flex;
+
+    .a-btn{
+        cursor: pointer;
+        background: none;
+        color: $color-primary-blue;
+    }
+
+    .new-offer-btn{
+      transition: .2s;
+
+      svg{
+        width: 19px;
+        height: 19px;
+      }
+    }
+
+    .my-profile-btn, .sign-out-btn {
+        margin-left: 2rem;
+
+        svg{
+          width: 22px;
+          height: 22px;
+        }
+    }
+
+    .my-profile-btn, .sign-out-btn, .new-offer-btn{
+        svg{
+          transition: .2s;
+          fill: $color-primary-dark-grey;
+        }
+        &:hover{
+          svg{
+            fill: #232323;
+          }
+        }
+    }
+
+    .my-profile-btn {
+        color: $color-primary-dark-grey;
+
+        &:hover {
+            color: $color-primary-orange;
+        }
+
+        @include media-breakpoint-down(md) {
+            margin: 1rem !important;
+        }
+    }
+
+    .sign-out-btn {
+        color: $color-primary-dark-grey;
+        background: transparent;
+        border: none;
+        outline: none;
+
+        &:hover{
+            color: $color-primary-orange;
+        }
+
+        @include media-breakpoint-down(md){
+            margin: 1rem !important;
+        }
+
+    }
+
+    @include media-breakpoint-down(md){
+      align-items: center;
+      justify-content: center;
+
+      .new-offer-btn, .my-profile-btn, .logout-btn {
+        margin: 0.5rem auto;
+      }
+    }
+}
