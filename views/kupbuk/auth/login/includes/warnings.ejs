@@ -1,0 +1,19 @@
+<div class="login-page__login-sec__warnings mb-2 mt-2">
+    <% if(onNewlyCreatedUser) { %>
+        <div class="alert alert-success" role="alert">
+            Pomyślnie się zarejestrowałeś/aś, ale nie będziesz mógł się zalogować dopóki nie potwierdzisz swojego emaila klikając w link, który Ci wysłaliśmy.
+        </div>
+    <% } %>
+
+    <% if(onPasswordIncorrectness) { %>
+        <div class="alert alert-danger" role="alert">
+            Wprowadziłeś nieprawidłowe dane logowania.
+        </div>
+    <% } %>
+
+    <% if(onEmailConfirmationStatusError) { %>
+        <div class="alert alert-warning" role="alert">
+            Nie potwierdziłeś swojego emaila.
+        </div>
+    <% } %>
+</div>

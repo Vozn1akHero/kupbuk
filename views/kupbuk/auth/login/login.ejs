@@ -1,12 +1,18 @@
-<%- include('../includes/head') %>
+<%- include('../../../includes/head') %>
 
 </head>
 
 <body>
 <div class="login-page">
-    <%- include('../includes/common-header-2') %>
+    <%- include('../../../includes/main-header-nli') %>
 
     <section class="login-page__login-sec">
+        <% if(warningsExistence) { %>
+            <%- include('./includes/warnings', {
+                onPasswordIncorrectness, onNewlyCreatedUser, onEmailConfirmationStatusError
+            }) %>
+        <% } %>
+
         <div class="login-page__login-sec__wrapper-1">
             <div class="login-page__login-sec__header">
                 <h3>Logowanie</h3>
@@ -35,12 +41,8 @@
 
                     <div class="form-group">
                         <button class="btn submit-button log-in-button">Zaloguj</button>
-                        <a class="restore-password">zapomniałeś hasła?</a></div>
+                        <a class="restore-password" href="/password-recovery">zapomniałeś hasła?</a></div>
                 </form>
-
-                <% if(onPasswordIncorrectness) { %>
-                    <span style="color: red;">Wprowadziłeś nieprawidłowe dane logowania</span>
-                <% } %>
 
                 <div class="login-page__join-up-sec">
                     <span>Nie masz konta?</span>
@@ -51,6 +53,6 @@
         </div>
     </section>
 
-    <%- include('../includes/footer') %>
+    <%- include('../../../includes/footer') %>
 </div>
 </body>

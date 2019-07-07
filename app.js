@@ -3,7 +3,7 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
 import session from 'express-session';
-import sequelize from './modules/sequilize'
+import sequelize from './modules/sequelize'
 import redisClient from './modules/redisClient'
 
 var redisStore = require('connect-redis')(session);
@@ -48,20 +48,6 @@ var server = app.listen(3000, () =>{
     console.log("server running on port 3000")
 });
 
+/*import modelsDbSynchronizerFunc from './modules/models-db-synchronizer';
 
-/*sequelize.sync().then(() =>
-    console.log("tables are created")
-);
-
-
-import Category from './models/category'
-import Cover from './models/cover'
-import Offer from './models/offer'
-import Order from './models/order'
-import User from './models/user'
-
-Category.sync()
-Cover.sync()
-Offer.sync()
-Order.sync()
-User.sync()*/
+modelsDbSynchronizerFunc();*/

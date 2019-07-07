@@ -1,4 +1,4 @@
-import sequelize from '../modules/sequilize';
+import sequelize from '../modules/sequelize';
 
 
 import * as Sequelize from 'sequelize';

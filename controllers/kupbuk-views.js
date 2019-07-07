@@ -67,11 +67,28 @@ exports.getNewOfferPage = (req, res, next) => {
 };
 
 exports.getLoginPage = (req, res, next) => {
-    res.render('kupbuk/login', {
-        onPasswordIncorrectness: req.query.inc_pass === "true"
+    const warningsExistence = req.query.inc_pass === "true" ||
+        req.query.reg_suc === "true" ||
+        req.query.email_wasnt_confirmed === "true";
+
+    res.render('kupbuk/auth/login/login', {
+        warningsExistence,
+        onPasswordIncorrectness: req.query.inc_pass === "true",
+        onNewlyCreatedUser: req.query.reg_suc === "true",
+        onEmailConfirmationStatusError: req.query.email_wasnt_confirmed === "true"
     });
 };
 
 exports.getSettingsPage = (req, res, next) => {
     res.render('kupbuk/settings');
+};
+
+exports.getPasswordRecoveryPage = (req, res, next) => {
+    res.render('kupbuk/auth/password-recovery');
+};
+
+exports.getEmailConfirmationSuccessPage = (req, res, next) => {
+    if(req.session.prev_url_temp !== '/confirm-email') return res.redirect('/shop');
+
+    res.render('kupbuk/auth/email-confirmation-success');
 };

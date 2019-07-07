@@ -1,10 +1,12 @@
-import sequelize from '../modules/sequilize';
+import sequelize from '../modules/sequelize';
 
 const Sequelize = require('sequelize');
 
 import Offer from "./offer";
 
 import cacheObj from "../modules/redisCache";
+import PasswordResetterTemp from "./other/auth/password-resetter";
+import EmailConfirmationTemp from "./other/auth/email-confirmation";
 
 const User = sequelize.define('User', {
     id: {
@@ -53,6 +55,16 @@ const cacheObjForModel = cacheObj
 
 User.hasMany(Offer, {
     foreignKey: 'sellerId',
+    sourceKey: 'id'
+});
+
+User.hasMany(PasswordResetterTemp, {
+    foreignKey: 'userId',
+    sourceKey: 'id'
+});
+
+User.hasMany(EmailConfirmationTemp, {
+    foreignKey: 'userId',
     sourceKey: 'id'
 });
 

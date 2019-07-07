@@ -1,4 +1,4 @@
-import sequelize from '../modules/sequilize';
+import sequelize from '../modules/sequelize';
 const Sequelize = require('sequelize')
 
 import Offer from "./offer";

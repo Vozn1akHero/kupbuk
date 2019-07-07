@@ -1,11 +1,23 @@
+//external packages/functions
 import bcrypt from 'bcrypt';
+import { format } from 'date-fns';
+import crypto from 'crypto';
 
-import sequelize from "../modules/sequilize";
+
+//sequelize
+import sequelize from "../modules/sequelize";
 import * as Sequelize from 'sequelize';
 
-import { format } from 'date-fns';
-
+//sql models
 import User from '../models/user';
+import PasswordResetterTemp from '../models/other/auth/password-resetter';
+import EmailConfirmationTemp from '../models/other/auth/email-confirmation';
+
+//internal functions
+import onPasswordRecoveryRequestMail from '../services/mail/password-recovery-request';
+import newPasswordSender from '../services/mail/new-password-sender';
+import emailConfirmationLinkSender from '../services/mail/email-confirmation-link-sender';
+
 
 exports.logIn = async (req, res, next) => {
     const userEmailOrLoginCorrectness = await sequelize
@@ -13,14 +25,25 @@ exports.logIn = async (req, res, next) => {
             {replacements: { data: req.body.userLoginOrEmail} , type: sequelize.QueryTypes.SELECT})
         .then(res => res);
 
-    if(!userEmailOrLoginCorrectness) return res.redirect('/login?inc_pass=true');
 
-    const user = await User.findAll({
+    if(!userEmailOrLoginCorrectness) res.redirect('/login?inc_pass=true');
+
+    const user = await User.findOne({
         where: {
             [Sequelize.Op.or]: [{login: req.body.userLoginOrEmail},
                 {email: req.body.userLoginOrEmail}]
-        }
-    }).then(res => res[0].dataValues);
+        },
+        raw: true
+    });
+    if(!user) res.redirect('/login?inc_pass=true');
+
+    //checking if user's email has already been confirmed
+    const userEmailConfirmationStatus = await sequelize
+        .query('EXEC CheckIfEmailIsConfirmed :data',
+            {replacements: { data: user.id} , type: sequelize.QueryTypes.SELECT})
+        .then(res => res);
+
+    if(!userEmailConfirmationStatus) res.redirect('/login?email_wasnt_confirmed=true');
 
     bcrypt.compare(req.body.userPassword, user.password, (err, result) => {
         if(result) {
@@ -36,7 +59,7 @@ exports.logIn = async (req, res, next) => {
             res.redirect('/shop');
         }
 
-        else return res.redirect('/login?inc_pass=true');
+        else res.redirect('/login?inc_pass=true');
     });
 };
 
@@ -70,9 +93,31 @@ exports.joinUp = async (req, res, next) => {
         sequelize.transaction().then(function(t) {
             User.create(newUser, {
                 transaction: t
-            }).then(function() {
-                t.commit();
-                //write some code to redirect newly created user to the login page
+            }).then(user => {
+                sequelize.transaction().then(tEmCn => {
+                    const tokenForEmailConfirmation = crypto.randomBytes(20).toString('hex');
+
+                    t.commit();
+
+                    EmailConfirmationTemp.create({
+                        token: tokenForEmailConfirmation,
+                        userId: user.dataValues.id
+                    }, {
+                        transaction: tEmCn
+                    }).then(eCT => {
+                        emailConfirmationLinkSender(newUser.email, eCT.token).then(() => {
+                            res.redirect('/login?reg_suc=true');
+                        });
+
+                        tEmCn.commit();
+                    }).catch(function(error) {
+                        console.log(error);
+
+                        t.rollback();
+                        tEmCn.rollback();
+                    });
+                });
+
             }).catch(function(error) {
                 console.log(error);
                 t.rollback();
@@ -138,3 +183,106 @@ exports.logOut = (req, res, next) => {
 
     res.redirect('/login');
 };
+
+exports.passwordRecoveryRequest = async (req, res, next) => {
+    const insertedEmail = req.body.userEmail;
+
+    const emailExistence = await sequelize
+        .query('EXEC CheckIfEmailExists :data',
+            {replacements: { data: insertedEmail} , type: sequelize.QueryTypes.SELECT})
+        .then(res => res);
+
+    if(!emailExistence) return res.status(403).msg('EMAIL WAS NOT FOUND');
+
+    const user = await User.findAll({
+        where: {
+            email: insertedEmail
+        },
+        attributes: ['id']
+    }).then(res => res[0].dataValues);
+
+    const token = crypto.randomBytes(20).toString('hex');
+
+    const passResTempModel = {
+        userId: user.id,
+        token: token
+    };
+
+    sequelize.transaction().then(function(t) {
+        PasswordResetterTemp.create(passResTempModel, {
+            transaction: t
+        }).then(function() {
+            t.commit();
+
+            //sending email
+            onPasswordRecoveryRequestMail(insertedEmail, token);
+
+        }).catch(function(error) {
+            console.log(error);
+            t.rollback();
+        });
+    });
+};
+
+exports.passwordRecoveryOnLinkActivation = async (req, res, next) => {
+    const token = req.query.token;
+
+    const tokenExistence = await sequelize
+        .query('EXEC CheckIfTokenForResettingPasswordExists :data',
+            {replacements: { data: token} , type: sequelize.QueryTypes.SELECT})
+        .then(res => res);
+
+    if(!tokenExistence) return res.status(403).msg('TOKEN WAS NOT FOUND');
+
+    const userBoundToToken = await sequelize.query(`SELECT u.id, u.email FROM Users u JOIN PasswordResetterTemps prt on u.id = prt.userId WHERE prt.token = ${token}`)
+        .then(res => res);
+
+    const newPassword = crypto.randomBytes(8).toString('hex');
+
+    sequelize.transaction().then(function(t) {
+        User.update({ password: newPassword }, {
+            where: {
+                id: userBoundToToken.id
+            },
+            transaction: t
+        }).then(function() {
+            t.commit();
+
+            //sending email
+            newPasswordSender(userBoundToToken.email, newPassword);
+        }).catch(function(error) {
+            console.log(error);
+            t.rollback();
+        });
+    });
+};
+
+exports.emailConfirmation = async (req, res, next) => {
+    const token = req.query.token;
+
+    const tokenExistence = await sequelize
+        .query('EXEC CheckIfTokenForEmailConfirmationExists :data',
+            {replacements: { data: token} , type: sequelize.QueryTypes.SELECT})
+        .then(res => res);
+
+    if(!tokenExistence) return res.status(403).msg('TOKEN WAS NOT FOUND');
+
+    sequelize.transaction().then(function(t) {
+        EmailConfirmationTemp.destroy({
+            where: {
+                token: token
+            },
+            transaction: t
+        }).then(function() {
+            t.commit();
+
+            req.session.prev_url_temp = req.baseUrl;
+
+            res.redirect('/email-confirmation-success');
+        }).catch(function(error) {
+            console.log(error);
+            t.rollback();
+        });
+    });
+};
+

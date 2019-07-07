@@ -1,0 +1,26 @@
+import sequelize from './sequelize'
+
+import Category from '../models/category'
+import Cover from '../models/cover'
+import Offer from '../models/offer'
+import User from '../models/user'
+import PasswordResetterTemp from '../models/other/auth/password-resetter';
+import EmailConfirmationTemp from '../models/other/auth/email-confirmation';
+
+
+const modelsDbSynchronizerFunc = () => {
+    sequelize.sync().then(() =>
+        console.log("tables are created")
+    );
+
+    Category.sync();
+    Cover.sync();
+    Offer.sync();
+    User.sync();
+
+    PasswordResetterTemp.sync();
+    EmailConfirmationTemp.sync();
+
+};
+
+export default modelsDbSynchronizerFunc;
