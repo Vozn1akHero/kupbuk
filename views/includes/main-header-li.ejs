@@ -1,7 +1,10 @@
 <header class="container-fluid header">
     <div class="row">
         <nav class="navbar navbar-in-shop navbar-expand-lg navbar-light bg-light col-xl-12">
-            <a class="navbar-brand logo-header" href="/shop/all/1"><img src="/img/logoheader.png" alt="logo" draggable="false"></a>
+            <a class="logo-header navbar-brand" href="/shop/all/1">
+                <img src="/img/logoheader.png" alt="logo" draggable="false">
+            </a>
+
             <button class="navbar-toggler"
                     type="button"
                     data-toggle="collapse"
@@ -31,10 +34,11 @@
 
 
                 <div class="user-controls">
-                    <a href="/new-offer" class="a-btn a-btn1 new-offer-btn">
+                    <a href="/new-offer" class="new-offer-btn">
                         <svg>
                             <use xlink:href="/img/icons/symbol-defs.svg#icon-plus"></use>
                         </svg>
+                        <span>Dodaj książkę</span>
                     </a>
 
                     <a href="/me"
@@ -42,6 +46,7 @@
                         <svg>
                             <use xlink:href="/img/icons/symbol-defs.svg#icon-user"></use>
                         </svg>
+                        <span>Twoje konto</span>
                     </a>
 
                     <form method="post"
@@ -51,6 +56,7 @@
                             <svg>
                                 <use xlink:href="/img/icons/symbol-defs.svg#icon-exit"></use>
                             </svg>
+                            <span>Wyloguj</span>
                         </button>
                     </form>
 

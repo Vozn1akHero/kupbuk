@@ -7390,32 +7390,31 @@ table tbody tr td, table tbody tr th {
 
 .user-controls {
   display: flex; }
-  .user-controls .a-btn {
-    cursor: pointer;
-    background: none;
-    color: #218098; }
-  .user-controls .new-offer-btn {
-    transition: .2s; }
-    .user-controls .new-offer-btn svg {
-      width: 19px;
-      height: 19px; }
+  .user-controls .new-offer-btn svg {
+    width: 19px;
+    height: 19px; }
   .user-controls .my-profile-btn, .user-controls .sign-out-btn {
     margin-left: 2rem; }
     .user-controls .my-profile-btn svg, .user-controls .sign-out-btn svg {
       width: 22px;
       height: 22px; }
-  .user-controls .my-profile-btn svg, .user-controls .sign-out-btn svg, .user-controls .new-offer-btn svg {
-    transition: .2s;
-    fill: #494949; }
-  .user-controls .my-profile-btn:hover svg, .user-controls .sign-out-btn:hover svg, .user-controls .new-offer-btn:hover svg {
-    fill: #232323; }
-  .user-controls .my-profile-btn {
-    color: #494949; }
-    .user-controls .my-profile-btn:hover {
-      color: #ff6600; }
-    @media (max-width: 991.98px) {
-      .user-controls .my-profile-btn {
-        margin: 1rem !important; } }
+  .user-controls .my-profile-btn, .user-controls .sign-out-btn, .user-controls .new-offer-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; }
+    .user-controls .my-profile-btn span, .user-controls .sign-out-btn span, .user-controls .new-offer-btn span {
+      color: #494949;
+      margin-top: .2rem;
+      font-size: .7rem; }
+    .user-controls .my-profile-btn svg, .user-controls .sign-out-btn svg, .user-controls .new-offer-btn svg {
+      transition: .2s;
+      fill: #494949; }
+    .user-controls .my-profile-btn:hover svg, .user-controls .sign-out-btn:hover svg, .user-controls .new-offer-btn:hover svg {
+      fill: #232323; }
+  @media (max-width: 991.98px) {
+    .user-controls .my-profile-btn {
+      margin: 1rem !important; } }
   .user-controls .sign-out-btn {
     color: #494949;
     background: transparent;
@@ -7475,13 +7474,14 @@ table tbody tr td, table tbody tr th {
 .header .nav-link {
   margin-left: 1rem; }
 
-.header .logo-header img {
-  width: 7rem; }
-
-@media (max-width: 575.98px) {
-  .header .logo-header {
-    max-width: 74%;
-    height: auto; } }
+.header .logo-header {
+  display: flex; }
+  .header .logo-header img {
+    width: 7rem; }
+  @media (max-width: 575.98px) {
+    .header .logo-header {
+      max-width: 74%;
+      height: auto; } }
 
 @media screen and (max-width: 991px) {
   .header .nav-link {
@@ -8181,14 +8181,22 @@ table tbody tr td, table tbody tr th {
     float: right;
     padding: 0.4rem;
     z-index: 1000; }
-  .book-page .book-section__title {
+  .book-page .book-section__title p {
+    font-size: 1.4rem;
+    font-weight: 500;
     color: #218098;
     word-break: break-word; }
-  .book-page .book-section__author {
-    color: #ff6600; }
-  .book-page .book-section__description {
+  .book-page .book-section__author p {
+    color: #494949;
+    font-size: .95rem; }
+  .book-page .book-section__description p {
     color: #494949;
     word-break: break-word; }
+  .book-page .book-section__sec-identifier {
+    color: #615d61;
+    font-size: .7rem;
+    display: block;
+    transform: translateY(-1rem); }
   .book-page .book-section__main-data-row {
     display: flex;
     align-items: center; }
@@ -8213,9 +8221,6 @@ table tbody tr td, table tbody tr th {
       width: 10rem;
       background-color: #f8f9fa !important;
       border-top: 1px solid #dee2e6; }
-    @media (min-width: 768px) {
-      .book-page .book-section__table tr td:nth-of-type(2) {
-        width: 33rem; } }
 
 .search-page__main-section {
   margin: 3rem 0 10rem 0;

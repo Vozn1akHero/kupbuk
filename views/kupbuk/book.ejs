@@ -51,17 +51,27 @@
                 </div>
 
                 <div class="book-section__main-info col-xs-7 col-md-7 col-lg-4 col-xl-4 mt-4">
-                    <h4 class="book-section__title">
-                        <%= book.title %>
-                    </h4>
+                    <div class="book-section__title">
+                        <p><%= book.title %></p>
 
-                    <p class="book-section__author">
-                        <%= book.author %>
-                    </p>
+                        <span class="book-section__sec-identifier">Nazwa</span>
+                    </div>
 
-                    <p class="book-section__description">
-                        <%= book.description %>
-                    </p>
+                    <div class="book-section__author">
+                        <p>
+                            <%= book.author %>
+                        </p>
+
+                        <span class="book-section__sec-identifier">Autor</span>
+                    </div>
+
+                    <div class="book-section__description mt-4">
+                        <p>
+                            <%= book.description %>
+                        </p>
+
+                        <span class="book-section__sec-identifier">Opis oferty</span>
+                    </div>
 
                     <div class="book-section__order-options mt-5 card">
                         <div class="book-section__order-options__seller-data card-body">
@@ -75,10 +85,6 @@
 
                             <div class="book-section__order-options__seller-data__maild
                              row align-items-center justify-content-center">
-                                <svg class="mr-2">
-                                    <use xlink:href="img/icons/symbol-defs.svg#icon-mail3"></use>
-                                </svg>
-
                                 <%= book.sellerEmail %>
                             </div>
                         </div>
@@ -87,7 +93,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row col-sm-9 col-md-10 col-lg-7 col-xl-6">
                 <table class="table book-section__table table-responsive-xs">
                     <tbody>
                     <tr>

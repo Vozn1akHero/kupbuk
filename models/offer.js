@@ -61,6 +61,11 @@ const Offer = sequelize.define('Offer', {
         type: Sequelize.INTEGER,
         allowNull: false
     },
+    bookStateId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        defaultValue: 1
+    },
     thumbnailUrl: {
         type: Sequelize.STRING(1000),
         allowNull: false
@@ -90,6 +95,7 @@ Offer.addNewOffer = async (newOffer) => {
         price: newOffer.price.split(".")[1].length > 0 ? newOffer.price : Number(newOffer.price + ".00"),
         categoryId: newOffer.categoryId,
         coverId: newOffer.coverId,
+        bookStateId: newOffer.bookStateId,
         thumbnailUrl: `/uploads/${newOffer.filename}`,
         sold: 0
     };
@@ -105,8 +111,10 @@ Offer.getOffer = (id) => {
      u.userAvatar as sellerAvatar,
       u.lastName as sellerLastName,
       u.email as sellerEmail,
-      o.sold as purchaseStatus
-       from Offers o JOIN Categories c ON o.categoryId = c.id JOIN Covers co ON o.coverId = co.id JOIN Users u ON o.sellerId = u.id WHERE o.id = ${id}`)
+      o.sold as purchaseStatus,
+      bst.title as bookState
+       from Offers o JOIN Categories c ON o.categoryId = c.id JOIN Covers co ON o.coverId = co.id JOIN BookStates bst ON o.bookStateId = bst.id
+       JOIN Users u ON o.sellerId = u.id WHERE o.id = ${id}`)
         .then(res => typeof(res) != 'undefined' && res[0] ? res[0] : null)
         .catch(() => null);
 };

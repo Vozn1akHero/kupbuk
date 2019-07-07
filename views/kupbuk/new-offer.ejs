@@ -80,6 +80,8 @@
                                minlength="1">
                     </div>
 
+                    <hr>
+
                     <div class="form-group thumbnail-group mt-4 mb-4">
                         <div>
                             <label for="InputBookPhoto">Dodaj okładkę</label>
@@ -102,11 +104,13 @@
                         </div>
                     </div>
 
+                    <hr>
+
                     <div class="form-group">
                         <select id="InputBookCategory"
                                 name="categoryId"
                                 required>
-                            <option value="" disabled selected>Wybierz kategorię</option>
+                            <option value="" disabled selected>Kategoria</option>
                             <option value="1">Akcja</option>
                             <option value="2">Biograficzne</option>
                             <option value="3">Dla dzieci</option>
@@ -130,13 +134,28 @@
                         </select>
                     </div>
 
+                    <hr>
+
                     <div class="form-group">
                         <select id="InputBookCover"
                                 name="coverId"
                                 required>
-                            <option value="" disabled selected>Wybierz typ okładki</option>
+                            <option value="" disabled selected>Typ okładki</option>
                             <option value="1">miękka</option>
                             <option value="2">twarda</option>
+                        </select>
+                    </div>
+
+                    <hr>
+
+                    <div class="form-group">
+                        <select id="InputBookState"
+                                name="bookStateId"
+                                required>
+                            <option value="" disabled selected>Stan książki</option>
+                            <option value="1">Nowy</option>
+                            <option value="2">Dobry</option>
+                            <option value="3">Zły</option>
                         </select>
                     </div>
 

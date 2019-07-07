@@ -1,9 +1,10 @@
 import sequelize from './sequelize'
 
-import Category from '../models/category'
-import Cover from '../models/cover'
-import Offer from '../models/offer'
-import User from '../models/user'
+import Category from '../models/category';
+import Cover from '../models/cover';
+import Offer from '../models/offer';
+import User from '../models/user';
+import BookState from '../models/book-state';
 import PasswordResetterTemp from '../models/other/auth/password-resetter';
 import EmailConfirmationTemp from '../models/other/auth/email-confirmation';
 
@@ -17,10 +18,10 @@ const modelsDbSynchronizerFunc = () => {
     Cover.sync();
     Offer.sync();
     User.sync();
+    BookState.sync();
 
     PasswordResetterTemp.sync();
     EmailConfirmationTemp.sync();
-
 };
 
 export default modelsDbSynchronizerFunc;

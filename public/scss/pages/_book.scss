@@ -1,34 +1,34 @@
-.book-page{
-    .book-section{
+.book-page {
+    .book-section {
         text-align: center;
 
         padding: 1rem;
 
-        &__main-info-block-1{
+        &__main-info-block-1 {
             flex: 0 0 3%;
             padding: 1rem !important;
         }
 
-        &__order-options{
+        &__order-options {
             display: flex;
             justify-content: center;
 
-            &__seller-data{
+            &__seller-data {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 color: $color-primary-dark-grey;
 
-                &__md{
-                    img{
+                &__md {
+                    img {
                         border-radius: 50%;
                         width: 5rem;
                         height: 5rem;
                     }
                 }
 
-                &__maild{
-                    svg{
+                &__maild {
+                    svg {
                         width: 1.2rem;
                         height: 1.2rem;
                         fill: $color-primary-dark-grey;
@@ -37,20 +37,20 @@
             }
         }
 
-        .col-lg-4, .col-xl-4{
+        .col-lg-4, .col-xl-4 {
             text-align: left;
         }
 
-        &__book-cover{
+        &__book-cover {
             position: relative;
 
-            img{
+            img {
                 width: 15.37rem;
                 height: 21.85rem;
             }
         }
 
-        &__price{
+        &__price {
             position: absolute;
             top: -2rem;
             left: -2rem;
@@ -64,25 +64,42 @@
             z-index: 1000;
         }
 
-        &__title{
-            color: $color-primary-blue;
-            word-break: break-word;
+        &__title {
+            p{
+                font-size: 1.4rem;
+                font-weight: 500;
+                color: $color-primary-blue;
+                word-break: break-word;
+            }
         }
 
-        &__author{
-            color: $color-primary-orange;
+        &__author {
+            p{
+                color: $color-primary-dark-grey;
+                font-size: .95rem;
+            }
         }
 
-        &__description{
-            color: $color-primary-dark-grey;
-            word-break: break-word;
+        &__description {
+            p{
+                color: $color-primary-dark-grey;
+                word-break: break-word;
+            }
         }
 
-        &__main-data-row{
+        &__sec-identifier{
+            color: $color-primary-light-grey-2;
+            font-size: .7rem;
+            display: block;
+            transform: translateY(-1rem);
+        }
+
+
+        &__main-data-row {
             display: flex;
             align-items: center;
 
-            svg{
+            svg {
                 width: 2rem;
                 height: 2rem;
                 fill: $color-primary-dark-grey;
@@ -90,38 +107,33 @@
             }
         }
 
-        &__city, &__date{
+        &__city, &__date {
             margin-bottom: 1.5rem;
         }
 
-        &__city{
+        &__city {
             margin-top: 1rem;
-            span{
+
+            span {
                 margin-left: 0.2rem;
                 color: $color-primary-blue;
             }
         }
 
-        &__date{
-            span{
+        &__date {
+            span {
                 margin-left: 0.2rem;
                 color: $color-primary-blue;
             }
         }
 
-        &__table{
+        &__table {
             margin-top: 5rem;
 
             tr td:first-child{
                 width: 10rem;
                 background-color: #f8f9fa !important;
                 border-top: 1px solid #dee2e6;
-            }
-
-            tr td:nth-of-type(2){
-                @include media-breakpoint-up(md){
-                    width: 33rem;
-                }
             }
         }
     }
