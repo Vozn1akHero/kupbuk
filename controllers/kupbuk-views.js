@@ -67,9 +67,9 @@ exports.getNewOfferPage = (req, res, next) => {
 };
 
 exports.getLoginPage = (req, res, next) => {
-    const warningsExistence = req.query.inc_pass === "true" ||
+    const warningsExistence = req.query && (req.query.inc_pass === "true" ||
         req.query.reg_suc === "true" ||
-        req.query.email_wasnt_confirmed === "true";
+        req.query.email_wasnt_confirmed === "true");
 
     res.render('kupbuk/auth/login/login', {
         warningsExistence,
@@ -80,7 +80,13 @@ exports.getLoginPage = (req, res, next) => {
 };
 
 exports.getSettingsPage = (req, res, next) => {
-    res.render('kupbuk/settings');
+    const warningsExistence = req.query &&
+        (req.query.onemailaltering === "true");
+
+    res.render('kupbuk/settings/settings', {
+        warningsExistence,
+        onEmailAltering: req.query.onemailaltering === "true"
+    });
 };
 
 exports.getPasswordRecoveryPage = (req, res, next) => {

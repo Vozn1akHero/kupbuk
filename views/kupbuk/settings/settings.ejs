@@ -1,12 +1,18 @@
-<%- include('../includes/head') %>
+<%- include('../../includes/head') %>
 
 </head>
     <body>
         <div class="settings-page">
-            <%- include('../includes/main-header-li') %>
+            <%- include('../../includes/main-header-li') %>
 
             <div class="col-12 col-md-12 col-lg-12 col-xl-12">
                 <div class="row align-items-center justify-content-center settings-page__wrapper">
+                    <% if(warningsExistence) { %>
+                        <%- include('./includes/warnings', {
+                         onEmailAltering
+                        }) %>
+                    <% } %>
+
                     <div class="settings-page__settings-sec">
                         <div class="form-group pass-altering-fg">
                             <form autocomplete="off"
@@ -22,7 +28,7 @@
                                        id="newPassword"
                                        name="newPassword"
                                        placeholder="Nowe hasło"/>
-                                <button class="passChangeSubmit btn submit-button">Zmień hasło</button>
+                                <button class="btn submit-button">Zmień hasło</button>
                             </form>
                         </div>
 
@@ -30,12 +36,13 @@
                             <form autocomplete="off"
                                   method="post" action="/auth/change-email">
                                 <span>Zmiana emaila</span>
-                                <input type="password"
+                                <input type="text"
                                        class="form-control"
-                                       id="newPassword"
-                                       name="newPassword"
+                                       id="newEmail"
+                                       name="newEmail"
+                                       required
                                        placeholder="Nowy email"/>
-                                <button class="passChangeSubmit btn submit-button">Zmień email</button>
+                                <button class="btn submit-button">Zmień email</button>
                             </form>
                         </div>
                     </div>
@@ -44,7 +51,7 @@
                 </div>
             </div>
 
-            <%- include('../includes/footer') %>
+            <%- include('../../includes/footer') %>
 
         </div>
     </body>

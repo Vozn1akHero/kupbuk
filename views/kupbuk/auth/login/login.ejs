@@ -13,11 +13,14 @@
             }) %>
         <% } %>
 
-        <div class="login-page__login-sec__wrapper-1">
-            <div class="login-page__login-sec__header">
-                <h3>Logowanie</h3>
+        <div class="login-page__login-sec__wrapper-1 col-11 col-sm-10 col-md-8 col-lg-6 col-xl-4 p-0">
+            <div class="login-page__login-sec__header pt-4 pb-4">
+                <h4>Logowanie</h4>
+                <svg class="ml-4">
+                    <use xlink:href="/img/icons/symbol-defs.svg#icon-enter"></use>
+                </svg>
             </div>
-            <div class="login-page__login-sec__controls-sec">
+            <div class="login-page__login-sec__controls-sec p-5">
                 <form method="post" action="/auth/login">
                     <div class="form-group">
                         <input type="text"

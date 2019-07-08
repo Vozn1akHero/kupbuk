@@ -8,15 +8,19 @@ import crypto from 'crypto';
 import sequelize from "../modules/sequelize";
 import * as Sequelize from 'sequelize';
 
+
 //sql models
 import User from '../models/user';
 import PasswordResetterTemp from '../models/other/auth/password-resetter';
 import EmailConfirmationTemp from '../models/other/auth/email-confirmation';
+import EmailAlteringConfirmationTemp from "../models/other/auth/email-altering-confirmation";
+
 
 //internal functions
 import onPasswordRecoveryRequestMail from '../services/mail/password-recovery-request';
 import newPasswordSender from '../services/mail/new-password-sender';
 import emailConfirmationLinkSender from '../services/mail/email-confirmation-link-sender';
+
 
 
 exports.logIn = async (req, res, next) => {
@@ -53,7 +57,8 @@ exports.logIn = async (req, res, next) => {
                 firstName: user.firstName,
                 lastName: user.lastName,
                 login: user.login,
-                userAvatar: user.userAvatar
+                userAvatar: user.userAvatar,
+                email: user.email
             };
 
             res.redirect('/shop');
@@ -158,13 +163,32 @@ exports.changePassword = async (req, res, next) => {
     });
 };
 
-exports.changeEmail = (req, res, next) => {
-    sequelize.transaction().then(function(t) {
+exports.changeEmail = async (req, res, next) => {
+    if(req.query.token) return res.status(403).msg('TOKEN WAS NOT SENT');
+
+    const token = req.query.token;
+
+    const tokenExistence = await sequelize
+        .query('EXEC CheckIfTokenForEmailAlteringConfirmationExists :data',
+            {replacements: { data: token} , type: sequelize.QueryTypes.SELECT})
+        .then(res => res);
+
+    if(!tokenExistence) return res.status(403).msg('TOKEN WAS NOT FOUND');
+
+    const newEmailData = await EmailAlteringConfirmationTemp.findOne({
+        where: {
+            token: token
+        },
+        attributes: ['newEmail', 'userId'],
+        raw: true
+    }).then(res => res);
+
+    sequelize.transaction().then(t => {
         User.update({
-            email: req.body.newEmail
+            email: newEmailData.newEmail
         }, {
             where: {
-                id: req.session.user.id
+                id: newEmailData.userId
             },
             transaction: t
         }).then(function() {
@@ -225,6 +249,8 @@ exports.passwordRecoveryRequest = async (req, res, next) => {
 };
 
 exports.passwordRecoveryOnLinkActivation = async (req, res, next) => {
+    if(req.query.token) return res.status(403).msg('TOKEN WAS NOT SENT');
+
     const token = req.query.token;
 
     const tokenExistence = await sequelize
@@ -286,3 +312,30 @@ exports.emailConfirmation = async (req, res, next) => {
     });
 };
 
+exports.emailAlteringConfirmation = (req, res, next) => {
+    const newEmail = req.body.newEmail;
+    const userActualEmail = req.session.user.email;
+
+    const token = crypto.randomBytes(20).toString('hex');
+
+    sequelize.transaction().then(t => {
+        EmailAlteringConfirmationTemp.create({
+            token: token,
+            newEmail: newEmail,
+            userId: req.session.user.id
+        }, {
+            transaction: t
+        }).then(function() {
+            t.commit();
+
+            //sending email
+            emailConfirmationLinkSender(userActualEmail, token);
+
+        }).catch(function(error) {
+            console.log(error);
+            t.rollback();
+        });
+    });
+
+    res.redirect('/settings?onemailaltering=true');
+};

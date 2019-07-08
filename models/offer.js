@@ -1,6 +1,4 @@
 import sequelize from '../modules/sequelize';
-
-
 import * as Sequelize from 'sequelize';
 
 import { format } from 'date-fns';
@@ -77,9 +75,12 @@ const Offer = sequelize.define('Offer', {
 });
 
 
+
 const cacheObjForModel = cacheObj
     .model('Offer')
     .ttl(15);
+
+
 
 Offer.addNewOffer = async (newOffer) => {
     const offer = {

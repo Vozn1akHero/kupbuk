@@ -7405,7 +7405,7 @@ table tbody tr td, table tbody tr th {
     justify-content: center; }
     .user-controls .my-profile-btn span, .user-controls .sign-out-btn span, .user-controls .new-offer-btn span {
       color: #494949;
-      margin-top: .2rem;
+      margin-top: .3rem;
       font-size: .7rem; }
     .user-controls .my-profile-btn svg, .user-controls .sign-out-btn svg, .user-controls .new-offer-btn svg {
       transition: .2s;
@@ -8145,7 +8145,7 @@ table tbody tr td, table tbody tr th {
   padding: 1rem; }
   .book-page .book-section__main-info-block-1 {
     flex: 0 0 3%;
-    padding: 1rem !important; }
+    height: fit-content; }
   .book-page .book-section__order-options {
     display: flex;
     justify-content: center; }
@@ -8154,7 +8154,12 @@ table tbody tr td, table tbody tr th {
       flex-direction: column;
       align-items: center;
       color: #494949; }
-      .book-page .book-section__order-options__seller-data__md img {
+      .book-page .book-section__order-options__seller-data__md span {
+        font-size: .9rem;
+        color: #494949; }
+      .book-page .book-section__order-options__seller-data__md hr {
+        width: 100%; }
+      .book-page .book-section__order-options__seller-data__md__seller-avatar {
         border-radius: 50%;
         width: 5rem;
         height: 5rem; }
@@ -8204,14 +8209,10 @@ table tbody tr td, table tbody tr th {
       width: 2rem;
       height: 2rem;
       fill: #494949;
-      margin-right: .5rem; }
-  .book-page .book-section__city, .book-page .book-section__date {
-    margin-bottom: 1.5rem; }
-  .book-page .book-section__city {
-    margin-top: 1rem; }
-    .book-page .book-section__city span {
-      margin-left: 0.2rem;
-      color: #218098; }
+      margin-right: .6rem; }
+  .book-page .book-section__city span {
+    margin-left: 0.2rem;
+    color: #218098; }
   .book-page .book-section__date span {
     margin-left: 0.2rem;
     color: #218098; }
@@ -8317,12 +8318,13 @@ table tbody tr td, table tbody tr th {
   .login-page__login-sec__wrapper-1 {
     box-shadow: 0 0 35px rgba(0, 0, 0, 0.2); }
   .login-page__login-sec__header {
-    text-align: center;
-    padding: 2rem 0; }
-    .login-page__login-sec__header h3 {
-      margin-bottom: 0; }
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .login-page__login-sec__header svg {
+      width: 2rem;
+      height: 2rem; }
   .login-page__login-sec__controls-sec {
-    padding: 3.5rem 3rem;
     background: #f9f9f9; }
 
 .login-page__join-up-sec {
@@ -8399,13 +8401,16 @@ table tbody tr td, table tbody tr th {
   flex-direction: column;
   align-items: center;
   justify-content: center; }
-  .password-recovery-page__password-recovery-sec__wrapper-1 {
-    box-shadow: 0 0 35px rgba(0, 0, 0, 0.2); }
+  .password-recovery-page__password-recovery-sec__window-wrapper {
+    box-shadow: 0 0 35px rgba(0, 0, 0, 0.2);
+    padding: 0 !important; }
   .password-recovery-page__password-recovery-sec__header {
-    text-align: center;
-    padding: 2rem 0; }
-    .password-recovery-page__password-recovery-sec__header h3 {
-      margin-bottom: 0; }
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .password-recovery-page__password-recovery-sec__header svg {
+      width: 2rem;
+      height: 2rem; }
   .password-recovery-page__password-recovery-sec__controls-sec {
     padding: 3.5rem 3rem;
     background: #f9f9f9; }

@@ -7,6 +7,7 @@ import Offer from "./offer";
 import cacheObj from "../modules/redisCache";
 import PasswordResetterTemp from "./other/auth/password-resetter";
 import EmailConfirmationTemp from "./other/auth/email-confirmation";
+import EmailAlteringConfirmationTemp from "./other/auth/email-altering-confirmation";
 
 const User = sequelize.define('User', {
     id: {
@@ -49,9 +50,13 @@ const User = sequelize.define('User', {
     }
 });
 
+
+
 const cacheObjForModel = cacheObj
     .model('User')
     .ttl(15);
+
+
 
 User.hasMany(Offer, {
     foreignKey: 'sellerId',
@@ -67,6 +72,12 @@ User.hasMany(EmailConfirmationTemp, {
     foreignKey: 'userId',
     sourceKey: 'id'
 });
+
+User.hasMany(EmailAlteringConfirmationTemp, {
+    foreignKey: 'userId',
+    sourceKey: 'id'
+});
+
 
 User.getUser = async (userData) => {
     return {
