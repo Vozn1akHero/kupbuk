@@ -20,7 +20,6 @@ const modelsDbSynchronizerFunc = () => {
     Offer.sync();
     User.sync();
     BookState.sync();
-
     PasswordResetterTemp.sync();
     EmailConfirmationTemp.sync();
     EmailAlteringConfirmationTemp.sync();

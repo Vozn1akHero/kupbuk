@@ -7589,48 +7589,48 @@ table tbody tr td, table tbody tr th {
     clip-path: polygon(0 0, 0 100%, 100% 77vh, 100% 0);
     background-size: cover;
     background-position: top; }
-    .homepage .main-section__text_box {
+    .homepage .main-section__text-box {
       position: absolute;
       top: 50%;
       left: 50%;
       -webkit-transform: translate(-50%, -50%);
       transform: translate(-50%, -50%);
       text-align: center; }
-      .homepage .main-section__text_box #row1, .homepage .main-section__text_box #row2, .homepage .main-section__text_box #row3 {
+      .homepage .main-section__text-box__row-1, .homepage .main-section__text-box__row-2, .homepage .main-section__text-box__row-3 {
         backface-visibility: hidden; }
-      .homepage .main-section__text_box #row1 p {
+      .homepage .main-section__text-box__row-1 p {
         font-size: 7rem;
         color: #fff;
         margin: 0; }
-        .homepage .main-section__text_box #row1 p span {
+        .homepage .main-section__text-box__row-1 p span {
           font-size: 1.5rem;
           font-style: italic;
           color: #fff; }
         @media (max-width: 575.98px) {
-          .homepage .main-section__text_box #row1 p {
+          .homepage .main-section__text-box__row-1 p {
             font-size: 3.3rem; } }
-      .homepage .main-section__text_box #row2 {
+      .homepage .main-section__text-box__row-2 {
         margin-top: -3rem; }
-        .homepage .main-section__text_box #row2 p {
+        .homepage .main-section__text-box__row-2 p {
           font-size: 4.1rem;
           color: #fff;
           margin: 0; }
           @media (max-width: 575.98px) {
-            .homepage .main-section__text_box #row2 p {
+            .homepage .main-section__text-box__row-2 p {
               font-size: 2rem;
               margin: 1.5rem 0 0.2rem 0; } }
-      .homepage .main-section__text_box #row3 {
+      .homepage .main-section__text-box__row-3 {
         margin-bottom: 2.1rem;
         margin-top: -1.2rem; }
-        .homepage .main-section__text_box #row3 p {
+        .homepage .main-section__text-box__row-3 p {
           font-size: 2.1rem;
           font-style: italic;
           color: #fff;
           margin: 0; }
           @media (max-width: 575.98px) {
-            .homepage .main-section__text_box #row3 p {
+            .homepage .main-section__text-box__row-3 p {
               font-size: 1.8rem; } }
-      .homepage .main-section__text_box #row4 .main-section__button {
+      .homepage .main-section__text-box__row-4 .main-section__button {
         width: 15rem;
         height: 8rem;
         text-decoration: none;
@@ -7641,15 +7641,15 @@ table tbody tr td, table tbody tr th {
         transform: skew(-10deg);
         transition: all .3s;
         position: relative; }
-        .homepage .main-section__text_box #row4 .main-section__button:hover {
+        .homepage .main-section__text-box__row-4 .main-section__button:hover {
           box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
           transform: translateY(-0.3rem) skew(-10deg); }
-        .homepage .main-section__text_box #row4 .main-section__button:active {
+        .homepage .main-section__text-box__row-4 .main-section__button:active {
           transform: translateY(0rem) skew(-10deg);
           -webkit-box-shadow: 0px 9px 25px -2px #636363;
           -moz-box-shadow: 0px 9px 25px -2px #636363;
           box-shadow: 0px 9px 25px -2px #636363; }
-        .homepage .main-section__text_box #row4 .main-section__button span {
+        .homepage .main-section__text-box__row-4 .main-section__button span {
           font-size: 1.7rem;
           font-weight: 100;
           display: block;
@@ -7658,7 +7658,7 @@ table tbody tr td, table tbody tr th {
           left: 50%;
           transform: translate(-50%, -50%) skew(10deg); }
         @media (max-width: 575.98px) {
-          .homepage .main-section__text_box #row4 .main-section__button {
+          .homepage .main-section__text-box__row-4 .main-section__button {
             width: 15rem;
             height: 6rem; } }
   .homepage .section-about {
@@ -7789,101 +7789,14 @@ table tbody tr td, table tbody tr th {
           grid-column-start: 1;
           grid-row-start: 5;
           grid-row-end: 6; } }
-  .homepage .section-opinions {
+  .homepage .section-video-bg {
     position: relative;
     height: 45rem; }
-    .homepage .section-opinions__content {
+    .homepage .section-video-bg__content {
       position: absolute;
       transform: translate(-50%, -50%);
       left: 50%;
       top: 50%; }
-      .homepage .section-opinions__content--opinion {
-        width: 52rem;
-        height: 14rem;
-        background-image: linear-gradient(210deg, #c5c5c5, #ffffff 50%);
-        -webkit-box-shadow: 0px 0px 18px -4px #636363;
-        -moz-box-shadow: 0px 0px 18px -4px #636363;
-        box-shadow: 0px 0px 18px -4px #636363;
-        transform: skewX(16deg); }
-        @media screen and (max-width: 992px) {
-          .homepage .section-opinions__content--opinion {
-            width: 43rem;
-            height: 12rem;
-            transform: skewX(0deg); } }
-        @media screen and (max-width: 815px) {
-          .homepage .section-opinions__content--opinion {
-            width: 74vw;
-            height: 9rem; } }
-        @media (max-width: 767.98px) {
-          .homepage .section-opinions__content--opinion {
-            height: 18rem;
-            width: 25rem; } }
-        @media (max-width: 575.98px) {
-          .homepage .section-opinions__content--opinion {
-            height: 20rem;
-            width: 15rem; } }
-        .homepage .section-opinions__content--opinion__content, .homepage .section-opinions__content--opinion__image {
-          display: inline-block;
-          transform: skewX(-16deg); }
-          @media screen and (max-width: 992px) {
-            .homepage .section-opinions__content--opinion__content, .homepage .section-opinions__content--opinion__image {
-              transform: skew(0deg); } }
-        .homepage .section-opinions__content--opinion__content {
-          float: right;
-          width: 60%;
-          margin: 2rem; }
-          @media (max-width: 767.98px) {
-            .homepage .section-opinions__content--opinion__content {
-              width: 100%;
-              padding: 1rem;
-              text-align: center;
-              margin: 0; } }
-          @media (max-width: 575.98px) {
-            .homepage .section-opinions__content--opinion__content {
-              width: 100%;
-              padding: 1rem;
-              text-align: center;
-              margin: 0; } }
-          .homepage .section-opinions__content--opinion__content h1 {
-            font-size: 2rem;
-            font-weight: 300;
-            color: #218098; }
-            @media screen and (max-width: 992px) {
-              .homepage .section-opinions__content--opinion__content h1 {
-                font-size: 1rem; } }
-          @media screen and (max-width: 992px) {
-            .homepage .section-opinions__content--opinion__content p {
-              font-size: 0.8rem; } }
-        .homepage .section-opinions__content--opinion__image {
-          margin: 1rem 0 0 3rem; }
-          @media (max-width: 767.98px) {
-            .homepage .section-opinions__content--opinion__image {
-              text-align: center;
-              width: 100%;
-              margin: 0;
-              margin-top: 1rem; } }
-          @media (max-width: 575.98px) {
-            .homepage .section-opinions__content--opinion__image {
-              text-align: center;
-              width: 100%;
-              margin: 0;
-              margin-top: 1rem; } }
-          .homepage .section-opinions__content--opinion__image img {
-            height: 12rem;
-            width: 12rem; }
-            @media screen and (max-width: 992px) {
-              .homepage .section-opinions__content--opinion__image img {
-                height: 10rem;
-                width: 10rem; } }
-            @media screen and (max-width: 813px) {
-              .homepage .section-opinions__content--opinion__image img {
-                height: 7rem;
-                width: 7rem; } }
-      .homepage .section-opinions__content--opinion:not(:last-child) {
-        margin-bottom: 4rem; }
-        @media screen and (max-width: 1200px) {
-          .homepage .section-opinions__content--opinion:not(:last-child) {
-            margin-bottom: 1rem; } }
   .homepage .footer {
     margin-top: 0 !important; }
 

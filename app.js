@@ -5,6 +5,8 @@ import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import sequelize from './modules/sequelize';
 import redisClient from './modules/redisClient';
+import modelsDbSynchronizerFunc from './modules/models-db-synchronizer';
+import sqlinjection from 'sql-injection';
 
 var redisStore = require('connect-redis')(session);
 
@@ -28,6 +30,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(sqlinjection);
+
 app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js'));
 app.use('/js', express.static(__dirname + '/node_modules/jquery/dist'));
 
@@ -45,10 +49,8 @@ sequelize
         console.error('Unable to connect to the database:', err);
     });
 
-var server = app.listen(3000, () =>{
+modelsDbSynchronizerFunc();
+
+const server = app.listen(3000, () =>{
     console.log("server running on port 3000")
 });
-
-/*import modelsDbSynchronizerFunc from './modules/models-db-synchronizer';
-
-modelsDbSynchronizerFunc();*/
