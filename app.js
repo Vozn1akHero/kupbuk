@@ -5,12 +5,14 @@ import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import sequelize from './modules/sequelize';
 import redisClient from './modules/redisClient';
-import modelsDbSynchronizerFunc from './modules/models-db-synchronizer';
-import sqlinjection from 'sql-injection';
 
-var redisStore = require('connect-redis')(session);
+import modelsDbSynchronizerFunc from './modules/models-db-synchronizer';
+import createSQLProcedures from './modules/sql-procedures';
+
+const redisStore = require('connect-redis')(session);
 
 const app = express();
+
 
 app.use(cookieParser());
 app.use(session({
@@ -30,8 +32,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(sqlinjection);
-
 app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js'));
 app.use('/js', express.static(__dirname + '/node_modules/jquery/dist'));
 
@@ -50,6 +50,7 @@ sequelize
     });
 
 modelsDbSynchronizerFunc();
+createSQLProcedures();
 
 const server = app.listen(3000, () =>{
     console.log("server running on port 3000")
