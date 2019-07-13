@@ -29,7 +29,6 @@ exports.logIn = async (req, res, next) => {
             {replacements: { data: req.body.userLoginOrEmail} , type: sequelize.QueryTypes.SELECT})
         .then(res => res);
 
-
     if(!userEmailOrLoginCorrectness) res.redirect('/login?inc_pass=true');
 
     const user = await User.findOne({
@@ -39,6 +38,7 @@ exports.logIn = async (req, res, next) => {
         },
         raw: true
     });
+
     if(!user) res.redirect('/login?inc_pass=true');
 
     //checking if user's email has already been confirmed
@@ -115,7 +115,7 @@ exports.joinUp = async (req, res, next) => {
                         });
 
                         tEmCn.commit();
-                    }).catch(function(error) {
+                    }).catch(error => {
                         console.log(error);
 
                         t.rollback();
@@ -123,7 +123,7 @@ exports.joinUp = async (req, res, next) => {
                     });
                 });
 
-            }).catch(function(error) {
+            }).catch(error => {
                 console.log(error);
                 t.rollback();
             });
@@ -143,7 +143,7 @@ exports.changePassword = async (req, res, next) => {
         }
 
         bcrypt.hash(req.body.newPassword, 10, async (err, hash) => {
-            sequelize.transaction().then(function(t) {
+            sequelize.transaction().then(t => {
                 User.update({
                     password: hash
                 }, {
@@ -154,7 +154,7 @@ exports.changePassword = async (req, res, next) => {
                 }).then(function() {
                     t.commit();
                     return res.status(200).render(`<div>PASSWORD WAS CORRECTLY CHANGED</div>`);
-                }).catch(function(error) {
+                }).catch(error => {
                     console.log(error);
                     t.rollback();
                 });
@@ -194,7 +194,7 @@ exports.changeEmail = async (req, res, next) => {
         }).then(function() {
             t.commit();
             return res.status(200).render(`<div>EMAIL WAS CORRECTLY CHANGED</div>`);
-        }).catch(function(error) {
+        }).catch(error => {
             console.log(error);
             t.rollback();
         });
@@ -232,16 +232,16 @@ exports.passwordRecoveryRequest = async (req, res, next) => {
         token: token
     };
 
-    sequelize.transaction().then(function(t) {
+    sequelize.transaction().then(t => {
         PasswordResetterTemp.create(passResTempModel, {
             transaction: t
-        }).then(function() {
+        }).then(() => {
             t.commit();
 
             //sending email
             onPasswordRecoveryRequestMail(insertedEmail, token);
 
-        }).catch(function(error) {
+        }).catch(error => {
             console.log(error);
             t.rollback();
         });
@@ -260,23 +260,24 @@ exports.passwordRecoveryOnLinkActivation = async (req, res, next) => {
 
     if(!tokenExistence) return res.status(403).msg('TOKEN WAS NOT FOUND');
 
-    const userBoundToToken = await sequelize.query(`SELECT u.id, u.email FROM Users u JOIN PasswordResetterTemps prt on u.id = prt.userId WHERE prt.token = ${token}`)
-        .then(res => res);
+    const userBoundToToken = await sequelize.query(`SELECT u.id, u.email FROM Users u JOIN PasswordResetterTemps 
+        prt on u.id = prt.userId WHERE prt.token = :token`,
+        { replacements: { token }, type: sequelize.QueryTypes.SELECT }).then(res => res);
 
     const newPassword = crypto.randomBytes(8).toString('hex');
 
-    sequelize.transaction().then(function(t) {
+    sequelize.transaction().then(t => {
         User.update({ password: newPassword }, {
             where: {
                 id: userBoundToToken.id
             },
             transaction: t
-        }).then(function() {
+        }).then(() => {
             t.commit();
 
             //sending email
             newPasswordSender(userBoundToToken.email, newPassword);
-        }).catch(function(error) {
+        }).catch(error => {
             console.log(error);
             t.rollback();
         });
@@ -288,24 +289,24 @@ exports.emailConfirmation = async (req, res, next) => {
 
     const tokenExistence = await sequelize
         .query('EXEC CheckIfTokenForEmailConfirmationExists :data',
-            {replacements: { data: token} , type: sequelize.QueryTypes.SELECT})
+            {replacements: { data: token } , type: sequelize.QueryTypes.SELECT})
         .then(res => res);
 
     if(!tokenExistence) return res.status(403).msg('TOKEN WAS NOT FOUND');
 
-    sequelize.transaction().then(function(t) {
+    sequelize.transaction().then(t => {
         EmailConfirmationTemp.destroy({
             where: {
                 token: token
             },
             transaction: t
-        }).then(function() {
+        }).then(() => {
             t.commit();
 
             req.session.prev_url_temp = req.baseUrl;
 
             res.redirect('/email-confirmation-success');
-        }).catch(function(error) {
+        }).catch(error => {
             console.log(error);
             t.rollback();
         });
@@ -325,13 +326,13 @@ exports.emailAlteringConfirmation = (req, res, next) => {
             userId: req.session.user.id
         }, {
             transaction: t
-        }).then(function() {
+        }).then(() => {
             t.commit();
 
             //sending email
             emailConfirmationLinkSender(userActualEmail, token);
 
-        }).catch(function(error) {
+        }).catch(error => {
             console.log(error);
             t.rollback();
         });

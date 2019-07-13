@@ -81,7 +81,6 @@ const cacheObjForModel = cacheObj
     .ttl(15);
 
 
-
 Offer.addNewOffer = async (newOffer) => {
     const offer = {
         sellerId: newOffer.sellerId,
@@ -115,8 +114,12 @@ Offer.getOffer = (id) => {
       o.sold as purchaseStatus,
       bst.title as bookState
        from Offers o JOIN Categories c ON o.categoryId = c.id JOIN Covers co ON o.coverId = co.id JOIN BookStates bst ON o.bookStateId = bst.id
-       JOIN Users u ON o.sellerId = u.id WHERE o.id = ${id}`)
-        .then(res => typeof(res) != 'undefined' && res[0] ? res[0] : null)
+       JOIN Users u ON o.sellerId = u.id WHERE o.id = :id`, {
+        replacements: {
+            id
+        },
+        type: Sequelize.QueryTypes.SELECT
+    }).then(res => typeof(res) != 'undefined' && res[0] ? res[0] : null)
         .catch(() => null);
 };
 

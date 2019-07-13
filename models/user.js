@@ -50,40 +50,38 @@ const User = sequelize.define('User', {
     }
 });
 
-
-
-const cacheObjForModel = cacheObj
-    .model('User')
-    .ttl(15);
-
-
-
 User.hasMany(Offer, {
     foreignKey: 'sellerId',
     sourceKey: 'id'
 });
-
 User.hasMany(PasswordResetterTemp, {
     foreignKey: 'userId',
     sourceKey: 'id'
 });
-
 User.hasMany(EmailConfirmationTemp, {
     foreignKey: 'userId',
     sourceKey: 'id'
 });
-
 User.hasMany(EmailAlteringConfirmationTemp, {
     foreignKey: 'userId',
     sourceKey: 'id'
 });
 
 
+
+const cacheObjForModel = cacheObj
+    .model('User')
+    .ttl(15);
+
 User.getUser = async (userData) => {
     return {
       userData,
       offers: await cacheObjForModel
-          .query(`SELECT Offers.id, title, author, price, Offers.city FROM Offers JOIN Users ON Offers.sellerId = Users.id WHERE Users.id =  ${userData.id}`)
+          .query('SELECT Offers.id, title, author, price, Offers.city FROM Offers JOIN Users ON Offers.sellerId = Users.id WHERE Users.id = :id', {
+              replacements: {
+                  id: userData.id
+              }, type: Sequelize.QueryTypes.SELECT
+          })
           .then(res => res)
     };
 };
