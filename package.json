@@ -41,7 +41,7 @@
     "file-loader": "^4.0.0",
     "filereader": "^0.10.3",
     "mocha": "^6.1.4",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.13.1",
     "nodemon": "^1.19.1",
     "postcss-loader": "^3.0.0",
     "sass-loader": "^7.1.0",
